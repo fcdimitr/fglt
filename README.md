@@ -1,4 +1,4 @@
-# FGlT <br/> Swift Neighbor Embedding of Sparse Stochastic Graphs
+# FGlT <br/> Fast Graphlet Transform
 
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01577/status.svg)](https://doi.org/10.21105/joss.01577)
 [![DOI](https://zenodo.org/badge/196885143.svg)](https://zenodo.org/badge/latestdoi/196885143)
@@ -19,21 +19,7 @@
 
 # Summary
 
-We introduce SG-t-SNE-<img src="svgs/0c4cdff2a5c675458f5a6629892c26d1.svg" align=middle width=12.32879834999999pt height=22.465723500000017pt/>, a high-performance software for swift
-embedding of a large, sparse, stochastic graph
-<img src="svgs/4ad232c35b5cd188a13d128bb2c1eecc.svg" align=middle width=103.24177049999999pt height=24.65753399999998pt/> into a <img src="svgs/2103f85b8b1477f430fc407cad462224.svg" align=middle width=8.55596444999999pt height=22.831056599999986pt/>-dimensional space
-(<img src="svgs/3fa1f779de09763d248814c0c4f40d07.svg" align=middle width=69.74298869999998pt height=22.831056599999986pt/>) on a shared-memory computer. The algorithm SG-t-SNE and the
-software t-SNE-<img src="svgs/0c4cdff2a5c675458f5a6629892c26d1.svg" align=middle width=12.32879834999999pt height=22.465723500000017pt/> were first described in Reference [[1](#Pitsianis2019)].
-The algorithm is built upon precursors for embedding a <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg" align=middle width=9.075367949999992pt height=22.831056599999986pt/>-nearest
-neighbor (<img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg" align=middle width=9.075367949999992pt height=22.831056599999986pt/>NN) graph, which is distance-based and regular with
-constant degree <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg" align=middle width=9.075367949999992pt height=22.831056599999986pt/>. In practice, the precursor algorithms are also
-limited up to 2D embedding or suffer from overly long latency in 3D
-embedding. SG-t-SNE removes the algorithmic restrictions and enables
-<img src="svgs/2103f85b8b1477f430fc407cad462224.svg" align=middle width=8.55596444999999pt height=22.831056599999986pt/>-dimensional embedding of arbitrary stochastic graphs, including, but
-not restricted to, <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg" align=middle width=9.075367949999992pt height=22.831056599999986pt/>NN graphs. SG-t-SNE-<img src="svgs/0c4cdff2a5c675458f5a6629892c26d1.svg" align=middle width=12.32879834999999pt height=22.465723500000017pt/> expedites the
-computation with high-performance functions and materializes 3D
-embedding in shorter time than 2D embedding with any precursor algorithm
-on modern laptop/desktop computers.
+We introduce...
 
 ## Getting started 
 
