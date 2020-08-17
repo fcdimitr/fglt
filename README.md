@@ -1,4 +1,4 @@
-# FGlT <br/> Fast Graphlet Transform
+# FGλT <br/> Fast Graphlet Transform
 
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01577/status.svg)](https://doi.org/10.21105/joss.01577)
 [![DOI](https://zenodo.org/badge/196885143.svg)](https://zenodo.org/badge/latestdoi/196885143)
