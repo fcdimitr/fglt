@@ -30,23 +30,17 @@ We introduce...
 
 FGlT uses the following open-source software:
 
--   [FFTW3](http://www.fftw.org/) 3.3.8
-	
--   [METIS](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) 5.1.0
-
--   [FLANN](https://www.cs.ubc.ca/research/flann/) 1.9.1
-
 -   [Intel TBB](https://01.org/tbb) 2019
 
 -   [Doxygen](http://www.doxygen.nl/) 1.8.14
 
 On Ubuntu:
 
-    sudo apt-get install libtbb-dev libflann-dev libmetis-dev libfftw3-dev doxygen
+    sudo apt-get install libtbb-dev doxygen
 
 On macOS:
 
-    sudo port install flann tbb metis fftw-3 doxygen
+    sudo port install tbb doxygen
 
 ### Installation 
 
