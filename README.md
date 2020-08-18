@@ -8,11 +8,8 @@
 -   [Summary](#overview)
 -   [Getting started](#getting-started)
     -   [System environment](#system-environment)
-    -   [Prerequisites](#prerequisites)
     -   [Installation](#installation)
-        -   [Basic instructions](#basic-instructions)
-        -   [Support of the conventional t-SNE](#support-of-the-conventional-t-sne)
-        -   [MATLAB interface](#matlab-interface)
+    -   [MATLAB interface](#matlab-interface)
     -   [Usage demo](#usage-demo)
 -   [License and community guidelines](#license-and-community-guidelines)
 -   [Contributors](#contributors)
@@ -21,32 +18,16 @@
 
 We introduce...
 
-## Getting started 
+# Getting started 
 
-### System environment 
+## System environment 
 
+The FGλT library has been tested under Ubuntu 18.04 and macOS Catalina
+v10.15.6. The only prerequisite is a `C++` compiler (optionally, with `cilk` support, see [Installation](#installation))
 
-### Prerequisites 
+## Installation 
 
-FGlT uses the following open-source software:
-
--   [Intel TBB](https://01.org/tbb) 2019
-
--   [Doxygen](http://www.doxygen.nl/) 1.8.14
-
-On Ubuntu:
-
-    sudo apt-get install libtbb-dev doxygen
-
-On macOS:
-
-    sudo port install tbb doxygen
-
-### Installation 
-
-#### Basic instructions 
-
-To generate the SG-t-SNE-<img src="svgs/0c4cdff2a5c675458f5a6629892c26d1.svg" align=middle width=12.32879834999999pt height=22.465723500000017pt/> library, test and demo programs:
+To generate the FGλT library:
 
     mkdir build; cd build
     ../configure
@@ -56,11 +37,27 @@ To specify the `C++` compiler:
 
     ./configure CXX=<compiler-executable>
 
-#### MATLAB interface 
+*Note*: If the specified compiler supports `cilk`, the compiled
+program will automatically use `cilk` for parallelism. Otherwise, the
+program will run in sequential mode.
 
-### Usage demo 
+## MATLAB interface 
 
-## License and community guidelines 
+To build the `MATLAB` interface to FGλT, issue
+
+    fgtmake
+    
+in `MATLAB` command window, under `MATLAB` directory.
+
+## Usage demo 
+
+A `MATLAB` demo script is provided under `MATLAB`:
+
+    demo.m
+    
+which showcases the use of FGλT on a couple of test graphs.
+
+# License and community guidelines 
 
 The FGlT library is licensed under the [GNU general public
 license v3.0](https://github.com/fcdimitr/fglt/blob/master/LICENSE).
@@ -70,7 +67,7 @@ guidelines](https://github.com/fcdimitr/fglt/blob/master/CONTRIBUTING.md)
 and [code of
 conduct](https://github.com/fcdimitr/fglt/blob/master/CODE_OF_CONDUCT.md).
 
-## Contributors 
+# Contributors 
 
 *Design and development*:\
 Dimitris Floros<sup>1</sup>, Nikos Pitsianis<sup>1,2</sup>, 
