@@ -7,6 +7,8 @@ AM_INIT_AUTOMAKE([-Wall, foreign])
 AC_CONFIG_SRCDIR([lib/])
 AC_CONFIG_HEADERS([config.h])
 
+AC_CONFIG_LINKS([lib/fglt.hpp:lib/fglt.hpp])
+
 printf "\nSetup language to C++\n\n"
 
 # Switch to a C++ compiler, and check if it works.
