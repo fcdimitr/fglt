@@ -48,20 +48,13 @@ On macOS:
 
 To generate the SG-t-SNE-<img src="svgs/0c4cdff2a5c675458f5a6629892c26d1.svg" align=middle width=12.32879834999999pt height=22.465723500000017pt/> library, test and demo programs:
 
-    ./configure
+    mkdir build; cd build
+    ../configure
     make all
 
 To specify the `C++` compiler:
 
     ./configure CXX=<compiler-executable>
-
-To test whether the installation is successful:
-
-    bin/test_modules
-
-To generate the documentation:
-
-    make documentation
 
 #### MATLAB interface 
 

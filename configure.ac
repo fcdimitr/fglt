@@ -4,7 +4,7 @@
 AC_PREREQ([2.69])
 AC_INIT([FGlT], [1.00], [fcdimitr@cs.duke.edu])
 AM_INIT_AUTOMAKE([-Wall, foreign])
-AC_CONFIG_SRCDIR([src/fglt.cpp])
+AC_CONFIG_SRCDIR([lib/])
 AC_CONFIG_HEADERS([config.h])
 
 printf "\nSetup language to C++\n\n"
@@ -34,5 +34,5 @@ AC_TYPE_SIZE_T
 AC_CHECK_FUNCS([gettimeofday])
 
 AC_CONFIG_FILES([Makefile
-                 src/Makefile])
+                 lib/Makefile])
 AC_OUTPUT
