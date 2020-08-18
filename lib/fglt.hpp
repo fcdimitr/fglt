@@ -16,7 +16,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <ctype.h>
-#include <sys/time.h>
+
 
 // type definitions
 #ifdef MX_COMPAT_32
@@ -30,29 +30,18 @@ typedef size_t    mwIndex;        /* unsigned pointer-width integer */
 #define USAGE "usage: C = fgt (A)"
 
 #define NGRAPHLET 16
-#define NTIME 6
-#define NPASS 2
-
-void setWorkers(int n);
 
 int getWorkers();
 
-void usage_info(bool ok, const char *message);
 
-void compute
-(
- double **f,
- double **t,
- double **pid,
- mwIndex *ii,
- mwIndex *jStart,
- mwSize n,
- mwSize m,
- mwSize np
- );
-
-struct timeval tic();
-double toc(struct timeval begin);
-
+  void compute
+  (
+   double **f,
+   mwIndex *ii,
+   mwIndex *jStart,
+   mwSize n,
+   mwSize m,
+   mwSize np
+   );
 
 #endif /* FGLT_H_ */

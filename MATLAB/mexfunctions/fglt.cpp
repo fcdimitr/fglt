@@ -46,11 +46,8 @@ void parseInputs
   // number of edges
   m[0] =  *(jStart[0] + n[0]);
 
-  // set threads
-  if (nargin > 1) setWorkers( (int) mxGetScalar(pargin[1]) );
 
   np[0] = getWorkers();
-  // printf( "workers: %d\n", np[0] );
   
 }
 
@@ -63,53 +60,23 @@ void mexFunction
  )
 {
 
-  usage_info (nargin <= 2 && nargout <=4, USAGE) ;
-
+  usage_info (nargin == 1 && nargout ==1, USAGE) ;
 
   mwIndex *ii, *jStart;
   double **f = (double **) malloc(NGRAPHLET*sizeof(double *));
   mwSize n, m, np;
-  double **t = (double **) malloc(NTIME*sizeof(double *));
-  double **pid = (double **) malloc(NPASS*sizeof(double *));
-  double *totTime;
-  
+
   parseInputs( &ii, &jStart, &n, &m, &np, pargin, nargin );
   
   pargout[0] = mxCreateDoubleMatrix(n, NGRAPHLET, mxREAL);
   for (int igraph = 0; igraph < NGRAPHLET; igraph++)
     f[igraph] = &( (mxGetPr(pargout[0]))[igraph*n] );
 
-  if ( nargout > 1 ){
-    pargout[1] = mxCreateDoubleMatrix(n, NTIME, mxREAL);
-    for (int igraph = 0; igraph < NTIME; igraph++)
-      t[igraph] = &( (mxGetPr(pargout[1]))[igraph*n] );
-  } else {
-    for (int igraph = 0; igraph < NTIME; igraph++)
-      t[igraph] = NULL;
-  }
 
-  if ( nargout > 2 ){
-    pargout[2] = mxCreateDoubleMatrix(n, NPASS, mxREAL);
-    for (int ipass = 0; ipass < NPASS; ipass++)
-      pid[ipass] = &( (mxGetPr(pargout[2]))[ipass*n] );
-  } else {
-    for (int ipass = 0; ipass < NPASS; ipass++)
-      pid[ipass] = NULL;
-  }
-
-  if ( nargout > 3 ){
-    pargout[3] = mxCreateDoubleMatrix(1, 1, mxREAL);
-    totTime = mxGetPr(pargout[3]);
-  } else {
-    totTime = NULL;
-  }
-
-  struct timeval timer = tic();
-  compute( f, t, pid, ii, jStart, n, m, np );
-  if (totTime) totTime[0] = toc( timer );
+  compute( f, ii, jStart, n, m, np );
+  
   
   free( f );
-  free( t );
-  free( pid );
+
   
 }

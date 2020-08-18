@@ -27,7 +27,7 @@ function [dnet] = fglt(A)
    
   try
     % call MEX functions (inside private)
-    draw = fgt( A );
+    draw = fglt( A );
     dnet = raw2net(draw);
   catch ME
     switch ME.identifier

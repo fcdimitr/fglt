@@ -21,32 +21,7 @@
 #include "fglt.hpp"
 
 
-struct timeval tic(){
-  struct timeval tv;
-  gettimeofday(&tv, NULL);
-  return tv;
-}
 
-double toc(struct timeval begin){
-  struct timeval end;
-  gettimeofday(&end, NULL);
-  double stime = ((double) (end.tv_sec - begin.tv_sec) * 1000 ) +
-    ((double) (end.tv_usec - begin.tv_usec) / 1000 );
-  stime = stime / 1000;
-  return(stime);
-}
-
-
-void setWorkers(int n){
-  char buf[10];
-  sprintf(buf, "%d", n);
-
-#ifdef HAVE_CILK_CILK_H
-  __cilkrts_end_cilk();
-  if ( 0!=__cilkrts_set_param("nworkers", buf ) )
-    printf( "Error setting workers\n" );
-#endif
-}
 
 int getWorkers(){
 #ifdef HAVE_CILK_CILK_H
@@ -343,8 +318,6 @@ int all_nonzero
 void compute
 (
  double **f,
- double **t,
- double **pid,
  mwIndex *ii,
  mwIndex *jStart,
  mwSize n,
@@ -377,85 +350,60 @@ void compute
   int *isNgbh = (int *) calloc( n*np, sizeof(int) );
   int *pos = (int *) calloc( n*np, sizeof(int) );
 
-  // --- helper timer
-  int keepTime = t[0] != NULL;
-  int keepPID  = pid[0] != NULL;
-
+  
   // --- first pass
   FOR (mwIndex i=0; i<n;i++) {
-    struct timeval timer;
 #ifdef HAVE_CILK_CILK_H
     int ip = __cilkrts_get_worker_number();
 #else
     int ip = 0;
 #endif
-    if (keepTime) timer = tic();
-    
+
+
+    // d_4 d_10 d_12 d_14
     p2(  &f[4][i], &f[10][i], &f[12][i], &f[14][i],
          c3, t00, i, jStart, ii,
          &fl[ip*n], &pos[ip*n], &isNgbh[ip*n], &isUsed[ip*n] );
 
-    // d_4 d_10 d_12 d_14
-    if ( keepTime ) t[0][i]  = toc( timer );
-
     
-    if (keepTime) timer = tic();
-
     // d_2 d_7
     spmv_first_pass( &f[2][i], &f[7][i], f[1], t04, i, jStart, ii );
 
-    if ( keepTime ) t[1][i]  = toc( timer );
-
     
-    if (keepTime) timer = tic();
-
     // d_3 d_6 d_8 d_11
     compute_all_available(f, i, t00, t01, t04);
 
-    if ( keepTime ) t[2][i]  = toc( timer );
     
     remove_neighbors(&isNgbh[ip*n], i, ii, jStart);
 
-    if (keepPID) pid[0][i] = ip;
     
   }
   
   // --- second pass
   FOR (mwIndex i=0; i<n;i++) {
-    struct timeval timer;
 #ifdef HAVE_CILK_CILK_H
     int ip = __cilkrts_get_worker_number();
 #else
     int ip = 0;
 #endif
-    
-    if (keepTime) timer = tic();
 
+    
     // d_5 d_9
     spmv_second_pass( &f[5][i], &f[9][i], f[2], f[4], t02, i, jStart, ii, &isNgbh[ip*n] );
 
-    if ( keepTime ) t[3][i]  = toc( timer );
-
-    if (keepTime) timer = tic();
-
+    
     // d_13
     compute_d13( &f[13][i], c3, i, jStart, ii, &isNgbh[ip*n] );
 
-    if ( keepTime ) t[4][i]  = toc( timer );
-
-
-    if (keepTime) timer = tic();
-
+    
     // d_15 (only if all others are nonzero)
     if ( all_nonzero(f, i) )
       compute_k4( &f[15][i], i, jStart, ii,
                   &isNgbh[ip*n], &k4cmn[ip*n], &k4cmnUsed[ip*n] );
 
-    if ( keepTime ) t[5][i]  = toc( timer );
     
     remove_neighbors(&isNgbh[ip*n], i, ii, jStart);
 
-    if (keepPID) pid[1][i] = ip;
     
   }
 
