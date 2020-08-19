@@ -1,4 +1,4 @@
-function [dnet] = fglt(A)
+function [draw, dnet] = fglt(A)
 % FGLT - Compute Fast Graphlet Transform.
 %   
 %  D = FGLT( A ) computes the Fast Graphlet Transform, given the

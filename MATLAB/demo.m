@@ -11,7 +11,7 @@ close all
 
 
 %% PARAMETERS
-n = 500000; p = 4;
+n = 500; p = 4;
 A = sprand(n,n,p/n);
 A = sparse( logical( A+A' ) );
 A = A - diag(diag(A));
@@ -26,7 +26,7 @@ fprintf('\n *** begin %s ***\n\n',mfilename);
 
 ticFGlT = tic; fprintf( '...compute graphlets...\n' ); 
 
-F = fglt( A );
+[Fraw,Fnet] = fglt( A );
 
 fprintf( '   - DONE in %.2f sec\n', toc(ticFGlT) );
 
@@ -34,7 +34,7 @@ fprintf( '   - DONE in %.2f sec\n', toc(ticFGlT) );
 
 G = graph.runOrca(A); 
 
-fprintf('Discrepancy %f \n', norm(G - F, 'fro'))
+fprintf('Discrepancy %f \n', norm(G - Fnet, 'fro'))
 
 % [ii,jj] = find(F ~= G);
 % 
