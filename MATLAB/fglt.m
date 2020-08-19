@@ -1,4 +1,5 @@
-function fglt
+% fglt.m Help file for fglt MEX-file.
+% 
 % FGLT - Fast Graphlet Transform.
 %   
 %  [FNET, FRAW] = FGLT( A ) computes the Fast Graphlet Transform,
@@ -20,5 +21,7 @@ function fglt
 %  
 % REFERENCES 
 %  
-%  <none>
+%  [1] D. Floros, N. Pitsianis, and X. Sun, “Fast graphlet transform
+%      of sparse graphs,” IEEE High Performance Extreme Computing
+%      Conference, 2020. Available: https://arxiv.org/abs/2007.11111.
 %  
