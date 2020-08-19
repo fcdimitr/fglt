@@ -585,7 +585,6 @@ PACKAGE_STRING='FGlT 1.00'
 PACKAGE_BUGREPORT='fcdimitr@cs.duke.edu'
 PACKAGE_URL=''
 
-ac_unique_file="lib/"
 # Factoring default headers for most tests.
 ac_includes_default="\
 #include <stdio.h>
@@ -2854,7 +2853,6 @@ END
   fi
 fi
 
-
 ac_config_headers="$ac_config_headers config.h"
 
 
@@ -5099,7 +5097,7 @@ fi
 done
 
 
-ac_config_files="$ac_config_files Makefile lib/Makefile"
+ac_config_files="$ac_config_files Makefile lib/Makefile src/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -5839,6 +5837,7 @@ do
     "depfiles") CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "lib/Makefile") CONFIG_FILES="$CONFIG_FILES lib/Makefile" ;;
+    "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

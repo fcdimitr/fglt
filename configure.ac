@@ -4,7 +4,6 @@
 AC_PREREQ([2.69])
 AC_INIT([FGlT], [1.00], [fcdimitr@cs.duke.edu])
 AM_INIT_AUTOMAKE([-Wall, foreign])
-AC_CONFIG_SRCDIR([lib/])
 AC_CONFIG_HEADERS([config.h])
 
 AC_CONFIG_LINKS([lib/fglt.hpp:lib/fglt.hpp])
@@ -36,5 +35,6 @@ AC_TYPE_SIZE_T
 AC_CHECK_FUNCS([gettimeofday])
 
 AC_CONFIG_FILES([Makefile
-                 lib/Makefile])
+                 lib/Makefile
+                 src/Makefile])
 AC_OUTPUT
