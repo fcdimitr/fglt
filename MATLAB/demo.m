@@ -11,7 +11,7 @@ close all
 
 
 %% PARAMETERS
-n = 500; p = 4;
+n = 500000; p = 3;
 A = sprand(n,n,p/n);
 A = sparse( logical( A+A' ) );
 A = A - diag(diag(A));
@@ -26,7 +26,9 @@ fprintf('\n *** begin %s ***\n\n',mfilename);
 
 ticFGlT = tic; fprintf( '...compute graphlets...\n' ); 
 
-[Fraw,Fnet] = fglt( A );
+% [Fraw, Fnet] = fglt( A ); % why it fails?
+
+Fraw = fglt( A ); Fnet = raw2net(Fraw);
 
 fprintf( '   - DONE in %.2f sec\n', toc(ticFGlT) );
 
@@ -34,7 +36,7 @@ fprintf( '   - DONE in %.2f sec\n', toc(ticFGlT) );
 
 G = graph.runOrca(A); 
 
-fprintf('Discrepancy %f \n', norm(G - Fnet, 'fro'))
+fprintf('Discrepancy %f\n', norm(G - Fnet, 'fro'))
 
 % [ii,jj] = find(F ~= G);
 % 
@@ -54,10 +56,9 @@ fprintf('Discrepancy %f \n', norm(G - Fnet, 'fro'))
 % fprintf('diff\n')
 % util.dispmat(D(ii(1:min(10,length(ii))),:),'%5d')
 
-[Draw,Dnet] = graph.graphletFreqFastV2(A);
-
-fprintf('Discrepancy FGLT raw %f \n', norm(Draw - F, 'fro'))
-fprintf('Discrepancy ORCA net %f \n', norm(G - Dnet, 'fro'))
+% [Draw,Dnet] = graph.graphletFreqFastV2(A);
+% fprintf('Discrepancy FGLT raw %f \n', norm(Draw - Fraw, 'fro'))
+% fprintf('Discrepancy ORCA net %f \n', norm(G - Fnet, 'fro'))
 
 %% (END)
 
