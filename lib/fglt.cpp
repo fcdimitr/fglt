@@ -19,6 +19,7 @@
 #endif
 
 #include "fglt.hpp"
+#include <algorithm>
 
 struct timeval tic(){
   struct timeval tv;
@@ -119,22 +120,23 @@ void compute_d13
   for (mwIndex id_i = jStart[i]; id_i < jStart[i+1]; id_i++){
     mwIndex k = ii[id_i];
 
+    if (c3[id_i] == 0) continue;
+
     for (mwIndex id_k = jStart[k]; id_k < jStart[k+1]; id_k++){
 
       // get the column (j)
       mwIndex j = ii[id_k];
 
+      if (j > k || c3[id_k] == 0) continue;
+
       if (isNgbh[j]) {
-        f13_i[0] += (c3[id_k] == 0) ? 0 : (c3[id_k]-1);
+        f13_i[0] += c3[id_k]-1;
       }
         
     }
       
   }
 
-  f13_i[0] /= 2;
-
-  
 }
 
 
