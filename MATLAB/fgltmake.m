@@ -1,4 +1,4 @@
-function fgtmake (what)
+function fgltmake (what)
 %GBMAKE compile MATLAB interface for Fast Graphlet Transform
 %
 % Usage:
@@ -122,13 +122,13 @@ for k = 1:length (mexfunctions)
     % compile if it is newer than its object file, or if any cfile was compiled
     if (make_all || tc > tobj || any_c_compiled)
         % compile the mexFunction
-        mexcmd = sprintf ('mex %s -silent %s %s ''%s'' -outdir ./private', ...
+        mexcmd = sprintf ('mex %s -silent %s %s ''%s'' -outdir ./', ...
             ldflags_cilk, flags, inc, mexfunction) ;
         fprintf ('%s\n', mexcmd) ;
         try
           eval (mexcmd) ;
         catch
-          mexcmd = sprintf ('mex %s -silent %s %s ''%s'' -outdir ./private', ...
+          mexcmd = sprintf ('mex %s -silent %s %s ''%s'' -outdir ./', ...
             ldflags, flags, inc, mexfunction) ;
           fprintf ('%s\n', mexcmd) ;
           fprintf (':') ;

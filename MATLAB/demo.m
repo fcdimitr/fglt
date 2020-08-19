@@ -11,12 +11,12 @@ close all
 
 
 %% PARAMETERS
-n = 500000; p = 3;
-A = sprand(n,n,p/n);
-A = sparse( logical( A+A' ) );
-A = A - diag(diag(A));
+% n = 500000; p = 3;
+% A = sprand(n,n,p/n);
+% A = sparse( logical( A+A' ) );
+% A = A - diag(diag(A));
 
-% load('data/testGraph06.mat') % it crashes with this input!
+load('data/testGraph06.mat') % it crashes with this input!
 
 %% (BEGIN)
 
@@ -26,9 +26,7 @@ fprintf('\n *** begin %s ***\n\n',mfilename);
 
 ticFGlT = tic; fprintf( '...compute graphlets...\n' ); 
 
-% [Fraw, Fnet] = fglt( A ); % why it fails?
-
-Fraw = fglt( A ); Fnet = raw2net(Fraw);
+Fnet = fglt( A );
 
 fprintf( '   - DONE in %.2f sec\n', toc(ticFGlT) );
 
@@ -78,7 +76,7 @@ fprintf('\n *** end %s ***\n\n',mfilename);
 %   0.1 (Aug 18, 2020) - Dimitris
 %       * initial implementation
 %
-% TIMESTAMP     <Aug 18, 2020: 11:44:11 Dimitris>
+% TIMESTAMP     <Aug 19, 2020: 12:31:15 Dimitris>
 %
 % ------------------------------------------------------------
 

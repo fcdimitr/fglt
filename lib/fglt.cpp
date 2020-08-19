@@ -51,6 +51,31 @@ void remove_neighbors
 }
 
 
+void raw2net
+(
+ double        ** const f,
+ double  const ** const d,
+ mwIndex const          i
+){
+  f[ 0][i]  =  d[ 0][i];
+  f[ 1][i]  =  d[ 1][i];
+  f[ 2][i]  =  d[ 2][i] -  2 * d[ 4][i];
+  f[ 3][i]  =  d[ 3][i] -      d[ 4][i];
+  f[ 4][i]  =  d[ 4][i];
+  f[ 5][i]  =  d[ 5][i] -  2 * d[ 9][i] -      d[10][i] -  2 * d[12][i] +  4 * d[13][i] +  2 * d[14][i] -  6 * d[15][i];
+  f[ 6][i]  =  d[ 6][i] -      d[10][i] -  2 * d[11][i] -  2 * d[12][i] +  2 * d[13][i] +  4 * d[14][i] -  6 * d[15][i];
+  f[ 7][i]  =  d[ 7][i] -      d[ 9][i] -      d[10][i] +  2 * d[13][i] +      d[14][i] -  3 * d[15][i];
+  f[ 8][i]  =  d[ 8][i] -      d[11][i] +      d[14][i] -      d[15][i];
+  f[ 9][i]  =  d[ 9][i] -  2 * d[13][i] +  3 * d[15][i];
+  f[10][i]  =  d[10][i] -  2 * d[13][i] -  2 * d[14][i] +  6 * d[15][i];
+  f[11][i]  =  d[11][i] -  2 * d[14][i] +  3 * d[15][i];
+  f[12][i]  =  d[12][i] -      d[13][i] -      d[14][i] +  3 * d[15][i];
+  f[13][i]  =  d[13][i] -  3 * d[15][i];
+  f[14][i]  =  d[14][i] -  3 * d[15][i];
+  f[15][i]  =  d[15][i];
+}
+
+
 void compute_all_available
 (
  double **f,
@@ -317,7 +342,8 @@ int all_nonzero
 
 void compute
 (
- double **f,
+ double ** const f,
+ double ** const fn,
  mwIndex *ii,
  mwIndex *jStart,
  mwSize n,
@@ -404,6 +430,9 @@ void compute
     
     remove_neighbors(&isNgbh[ip*n], i, ii, jStart);
 
+
+    // transform to net
+    raw2net( (double ** const) fn, (double const ** const) f, i );
     
   }
 

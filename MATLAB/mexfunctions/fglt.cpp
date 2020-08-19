@@ -7,7 +7,7 @@
     mexErrMsgIdAndTxt ("GrB:error", message) ;              \
 }
 
-
+#define USAGE "usage: [Fnet, Fraw] = fgt (A) ; A must be sparse"
 
 void usage_info       // check usage and make sure GrB.init has been called
 (
@@ -60,23 +60,39 @@ void mexFunction
  )
 {
 
-  usage_info (nargin == 1 && nargout ==1, USAGE) ;
+  usage_info (nargin == 1 && nargout <=2 && mxIsSparse(pargin[0]) , USAGE) ;
 
   mwIndex *ii, *jStart;
-  double **f = (double **) malloc(NGRAPHLET*sizeof(double *));
+  double **f  = (double **) malloc(NGRAPHLET*sizeof(double *));
+  double **fn = (double **) malloc(NGRAPHLET*sizeof(double *));
   mwSize n, m, np;
 
   parseInputs( &ii, &jStart, &n, &m, &np, pargin, nargin );
   
   pargout[0] = mxCreateDoubleMatrix(n, NGRAPHLET, mxREAL);
   for (int igraph = 0; igraph < NGRAPHLET; igraph++)
-    f[igraph] = &( (mxGetPr(pargout[0]))[igraph*n] );
+    fn[igraph] = &( (mxGetPr(pargout[0]))[igraph*n] );
+
+  if ( nargout > 1 ){
+    pargout[1] = mxCreateDoubleMatrix(n, NGRAPHLET, mxREAL);
+    for (int igraph = 0; igraph < NGRAPHLET; igraph++)
+      f[igraph] = &( (mxGetPr(pargout[1]))[igraph*n] );
+  } else {
+    for (int igraph = 0; igraph < NGRAPHLET; igraph++)
+      f[igraph] = (double *) calloc( n, sizeof(double) );
+  }
 
 
-  compute( f, ii, jStart, n, m, np );
+  compute( f, fn, ii, jStart, n, m, np );
   
+
+  if (nargout <= 1){
+    for (int igraph = 0; igraph < NGRAPHLET; igraph++)
+      free(f[igraph]);
+  }
   
-  free( f );
+  free( f  );
+  free( fn );
 
   
 }

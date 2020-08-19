@@ -27,8 +27,6 @@ typedef size_t    mwSize;         /* unsigned pointer-width integer */
 typedef size_t    mwIndex;        /* unsigned pointer-width integer */
 #endif
 
-#define USAGE "usage: C = fgt (A)"
-
 #define NGRAPHLET 16
 
 int getWorkers();
@@ -36,7 +34,8 @@ int getWorkers();
 
   void compute
   (
-   double **f,
+   double ** const f,
+   double ** const fn,
    mwIndex *ii,
    mwIndex *jStart,
    mwSize n,
