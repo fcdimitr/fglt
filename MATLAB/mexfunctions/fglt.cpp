@@ -69,6 +69,7 @@ void mexFunction
 
   parseInputs( &ii, &jStart, &n, &m, &np, pargin, nargin );
   
+  
   pargout[0] = mxCreateDoubleMatrix(n, NGRAPHLET, mxREAL);
   for (int igraph = 0; igraph < NGRAPHLET; igraph++)
     fn[igraph] = &( (mxGetPr(pargout[0]))[igraph*n] );

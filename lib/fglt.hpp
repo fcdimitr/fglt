@@ -17,6 +17,7 @@
 #include <cmath>
 #include <ctype.h>
 
+#include <sys/time.h>
 
 // type definitions
 #ifdef MX_COMPAT_32

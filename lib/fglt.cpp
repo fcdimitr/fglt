@@ -20,6 +20,20 @@
 
 #include "fglt.hpp"
 
+struct timeval tic(){
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+  return tv;
+}
+  
+double toc(struct timeval begin){
+  struct timeval end;
+  gettimeofday(&end, NULL);
+  double stime = ((double) (end.tv_sec - begin.tv_sec) * 1000 ) +
+    ((double) (end.tv_usec - begin.tv_usec) / 1000 );
+  stime = stime / 1000;
+  return(stime);
+}
 
 
 
@@ -143,13 +157,12 @@ void intersection(int *joint, int *arr1, int *arr2, int m, int n)
 
 void compute_k4
 (
- double *f15_i,
+ double *f15,
  mwIndex i,
  mwIndex *jStart,
  mwIndex *ii,
  int *isNgbh,
- mwIndex *k4cmn,
- mwIndex *k4cmnUsed 
+ mwIndex *k4cmn
 ){
 
   // --- compute K_4
@@ -157,6 +170,8 @@ void compute_k4
 
     // working with edge (i,j)
     mwIndex j = ii[id_i];
+
+    if (j < i) continue;
 
     // counter for common nodes
     mwIndex cntCmn = 0;
@@ -166,28 +181,39 @@ void compute_k4
       // get the column (j)
       mwIndex k = ii[id_j];
 
+      if (k < j) continue;
+      
       // if common to (i) and (j) add to list
       if (isNgbh[k]) {
         k4cmn[cntCmn++] = k;
-        k4cmnUsed[k] = 1;
+        isNgbh[k] = -1;
       }
 
     }
 
     // check every combination
-    for (mwIndex k_1 = 0; k_1 < cntCmn; k_1++)
-      for (mwIndex id_l = jStart[k4cmn[k_1]]; id_l < jStart[k4cmn[k_1]+1]; id_l++){
+    for (mwIndex k_1 = 0; k_1 < cntCmn; k_1++){
+      mwIndex k = k4cmn[k_1];
+      for (mwIndex id_l = jStart[k]; id_l < jStart[k+1]; id_l++){
         mwIndex l = ii[id_l];
 
-        if (k4cmnUsed[l]) f15_i[0]++;
-          
-      }
+        if (l < k) continue;
 
-    for (mwIndex k_1 = 0; k_1 < cntCmn; k_1++) k4cmnUsed[k4cmn[k_1]] = 0;
+        if (isNgbh[l] == -1) {
+          f15[i]++;
+          f15[j]++;
+          f15[k]++;
+          f15[l]++;
+        }
+        
+      }
+    }
+
+    for (mwIndex k_1 = 0; k_1 < cntCmn; k_1++) isNgbh[k4cmn[k_1]] = 1;
           
   }
 
-  f15_i[0] /= 6;
+  // f15_i[0] /= 6;
   
 }
 
@@ -351,11 +377,18 @@ void compute
  mwSize np
  ){
 
+  struct timeval timer_all = tic();
+
+  
+
+
   // --- setup helpers
   double *t00 = (double *) calloc( n, sizeof(double) );
   double *t01 = (double *) calloc( n, sizeof(double) );
   double *t02 = (double *) calloc( n, sizeof(double) );
   double *t04 = (double *) calloc( n, sizeof(double) );
+
+
 
   FOR (mwSize i=0;i<n;i++) {
     // get degree of vertex (i)
@@ -367,14 +400,14 @@ void compute
     
   }
   
+  
   // --- setup auxilliary vectors (size n)
   double *fl = (double *) calloc( n*np, sizeof(double) );
-  double *c3 = (double *) calloc( m, sizeof(double) );
-  mwIndex *isUsed    = (mwIndex *) calloc( n*np, sizeof(mwIndex) );
-  mwIndex *k4cmn     = (mwIndex *) calloc( n*np, sizeof(mwIndex) );
-  mwIndex *k4cmnUsed = (mwIndex *) calloc( n*np, sizeof(mwIndex) );
-  int *isNgbh = (int *) calloc( n*np, sizeof(int) );
   int *pos = (int *) calloc( n*np, sizeof(int) );
+  mwIndex *isUsed    = (mwIndex *) calloc( n*np, sizeof(mwIndex) );
+  
+  double *c3 = (double *) calloc( m, sizeof(double) );
+  int *isNgbh = (int *) calloc( n*np, sizeof(int) );
 
   
   // --- first pass
@@ -398,12 +431,23 @@ void compute
     
     // d_3 d_6 d_8 d_11
     compute_all_available(f, i, t00, t01, t04);
-
-    
     remove_neighbors(&isNgbh[ip*n], i, ii, jStart);
+        
 
     
   }
+
+  free(fl);
+  free(pos);
+  free(isUsed);
+
+  free(t00);
+  free(t01);
+
+  free(t04);
+
+  mwIndex *k4cmn   = (mwIndex *) calloc( n*np, sizeof(mwIndex) );
+  double  *k4num   = (double *)  calloc( n*np, sizeof(mwIndex) );
   
   // --- second pass
   FOR (mwIndex i=0; i<n;i++) {
@@ -424,31 +468,42 @@ void compute
     
     // d_15 (only if all others are nonzero)
     if ( all_nonzero(f, i) )
-      compute_k4( &f[15][i], i, jStart, ii,
-                  &isNgbh[ip*n], &k4cmn[ip*n], &k4cmnUsed[ip*n] );
-
+      compute_k4( &k4num[ip*n], i, jStart, ii,
+                  &isNgbh[ip*n], &k4cmn[ip*n] );    
     
     remove_neighbors(&isNgbh[ip*n], i, ii, jStart);
-
-
-    // transform to net
-    raw2net( (double ** const) fn, (double const ** const) f, i );
+    
+    
     
   }
 
-  free(fl);
-  free(isUsed);
+  // merge k4 counts
+  FOR (mwIndex i=0; i<n;i++){
+
+#ifdef HAVE_CILK_CILK_H
+    int ip = __cilkrts_get_worker_number();
+#else
+    int ip = 0;
+#endif
+    
+    for (mwIndex ip=0; ip<np;ip++)
+      f[15][i] += k4num[ip*n + i];
+
+    
+    // transform to net
+    raw2net( (double ** const) fn, (double const ** const) f, i );
+
+    
+  }
+  
   free(isNgbh);
-  free(pos);
   free(k4cmn);
-  free(k4cmnUsed);
+  free(k4num);
 
-  free(t00);
-  free(t01);
   free(t02);
-  free(t04);
-
   free(c3);
+
+  printf( "Total elapsed time: %.4f sec\n", toc( timer_all ) );
   
   
 }
