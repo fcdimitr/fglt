@@ -48,6 +48,13 @@ If you wish to install the executable `fglt`, issue:
 *Note*: Depending on your setup, you might need `sudo` privileges for
 this operation.
 
+To generate the documentation (assuming `Doxygen` is installed on your
+machine):
+
+    cd docs
+    make
+
+
 ## Usage demo
 
 The FGλT executable is named `fglt`. Usage:
