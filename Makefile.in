@@ -97,7 +97,8 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES =
-CONFIG_CLEAN_VPATH_FILES =
+CONFIG_CLEAN_VPATH_FILES = docs/MAINPAGE.md docs/doxygen.config \
+	docs/Makefile
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -155,8 +156,10 @@ ETAGS = etags
 CTAGS = ctags
 CSCOPE = cscope
 DIST_SUBDIRS = $(SUBDIRS)
-am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in ar-lib \
-	compile depcomp install-sh missing
+am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
+	$(top_srcdir)/docs/MAINPAGE.md $(top_srcdir)/docs/Makefile \
+	$(top_srcdir)/docs/doxygen.config ar-lib compile depcomp \
+	install-sh missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)

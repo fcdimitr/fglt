@@ -6,7 +6,10 @@ AC_INIT([FGlT], [1.00], [fcdimitr@cs.duke.edu])
 AM_INIT_AUTOMAKE([-Wall, foreign])
 AC_CONFIG_HEADERS([config.h])
 
-AC_CONFIG_LINKS([lib/fglt.hpp:lib/fglt.hpp])
+AC_CONFIG_LINKS([lib/fglt.hpp:lib/fglt.hpp
+                 docs/MAINPAGE.md:docs/MAINPAGE.md
+                 docs/doxygen.config:docs/doxygen.config
+                 docs/Makefile:docs/Makefile])
 
 printf "\nSetup language to C++\n\n"
 

@@ -53,6 +53,7 @@ machine):
 
     cd docs
     make
+    open html/index.html
 
 
 ## Usage demo
