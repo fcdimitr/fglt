@@ -7,6 +7,7 @@ n = 100000;
 tOrca = zeros(10,8);
 tFGLT = zeros(10,8);
 maxDeg = zeros(10,8);
+discr = zeros(10,8);
 
 for p = 1:8
   for k = 1:10
@@ -23,6 +24,15 @@ for p = 1:8
     ticORCA = tic;
     G = graph.runOrca(A);
     tOrca(k,p) = toc(ticORCA);
+    
+    discr(k,p) = norm(G - Fnet, 'fro');
   end
 end
 
+plot([median(tOrca,1).' median(tFGLT,1).'],'o-')
+legend({'ORCA', 'FGLT'})
+xlabel('initial degree')
+ylabel('Time (sec)')
+
+fprintf('All correct ? %d\n', ...
+  all(discr(:) == 0))
