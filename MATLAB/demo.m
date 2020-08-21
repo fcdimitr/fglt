@@ -9,14 +9,13 @@
 clear
 close all
 
-
 %% PARAMETERS
-% n = 500000; p = 3;
-% A = sprand(n,n,p/n);
-% A = sparse( logical( A+A' ) );
-% A = A - diag(diag(A));
+n = 1000000; p = 3;
+A = sprand(n,n,p/n);
+A = sparse( logical( A+A' ) );
+A = A - diag(diag(A));
 
-load('data/testGraph06.mat') % it crashes with this input!
+% load('data/testGraph06.mat') 
 
 %% (BEGIN)
 
@@ -41,7 +40,7 @@ fprintf('Discrepancy %f\n', norm(G - Fnet, 'fro'))
 % ii = unique(ii);
 % jj = unique(jj);
 % 
-% fprintf('Diferences in %d verices %d graphlets\n', ...
+% fprintf('Differences in %d verices %d graphlets\n', ...
 %   length(ii), length(jj))
 % 
 % fprintf('FGLT\n')
