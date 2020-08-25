@@ -30,10 +30,13 @@ typedef size_t    mwIndex;        /* unsigned pointer-width integer */
 
 #define NGRAPHLET 16
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int getWorkers();
 
-
-  void compute
+void compute
   (
    double ** const f,
    double ** const fn,
@@ -43,5 +46,9 @@ int getWorkers();
    mwSize m,
    mwSize np
    );
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* FGLT_H_ */
