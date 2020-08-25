@@ -27,7 +27,7 @@ struct timeval tic(){
   return tv;
 }
   
-double toc(struct timeval begin){
+static double toc(struct timeval begin){
   struct timeval end;
   gettimeofday(&end, NULL);
   double stime = ((double) (end.tv_sec - begin.tv_sec) * 1000 ) +
@@ -38,7 +38,7 @@ double toc(struct timeval begin){
 
 
 
-int getWorkers(){
+extern "C" int getWorkers(){
 #ifdef HAVE_CILK_CILK_H
   return __cilkrts_get_nworkers();
 #else
@@ -46,7 +46,7 @@ int getWorkers(){
 #endif
 }
 
-void remove_neighbors
+static void remove_neighbors
 (
  int *isNgbh,
  mwIndex i,
@@ -66,7 +66,7 @@ void remove_neighbors
 }
 
 
-void raw2net
+static void raw2net
 (
  double        ** const f,
  double  const ** const d,
@@ -91,7 +91,7 @@ void raw2net
 }
 
 
-void compute_all_available
+static void compute_all_available
 (
  double **f,
  mwIndex i,
@@ -107,7 +107,7 @@ void compute_all_available
   f[11][i]  = t00[i] * f[4][i];
 }
 
-void compute_d13
+static void compute_d13
 (
  double *f13_i,
  double *c3,
@@ -140,7 +140,7 @@ void compute_d13
 }
 
 
-void intersection(int *joint, int *arr1, int *arr2, int m, int n) 
+static void intersection(int *joint, int *arr1, int *arr2, int m, int n) 
 { 
   int i = 0, j = 0, k = 0; 
   while (i < m && j < n) 
@@ -157,7 +157,7 @@ void intersection(int *joint, int *arr1, int *arr2, int m, int n)
   } 
 } 
 
-void compute_k4
+static void compute_k4
 (
  double *f15,
  mwIndex i,
@@ -219,7 +219,7 @@ void compute_k4
   
 }
 
-void spmv_second_pass
+static void spmv_second_pass
 (
  double *f5_i,
  double *f9_i,
@@ -247,7 +247,7 @@ void spmv_second_pass
   
 }
 
-void spmv_first_pass
+static void spmv_first_pass
 (
  double *f2_i,
  double *f7_i,
@@ -274,7 +274,7 @@ void spmv_first_pass
   
 }
 
-void p2
+static void p2
 (
  double *f4_i,
  double *f10_i,
@@ -353,7 +353,7 @@ void p2
     
 }
 
-int all_nonzero
+static int all_nonzero
 (
  double **f,
  mwIndex i
@@ -368,7 +368,7 @@ int all_nonzero
   
 
 
-void compute
+extern "C" void compute
 (
  double ** const f,
  double ** const fn,

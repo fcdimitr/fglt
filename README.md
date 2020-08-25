@@ -85,6 +85,18 @@ A `MATLAB` demo script is provided under `MATLAB`:
     
 which showcases the use of FGλT on a couple of test graphs.
 
+# Building with Meson
+
+You can use [Meson](mesonbuild.com) to build a shared library and link the demo executable against it.
+You need to build the shared library to use FGλT with Julia or Python.
+
+After installing meson and ninja, you can simply run:
+
+    meson build
+    cd build
+    ninja
+    sudo ninja install # optional: install the shared library system-wide
+
 # License and community guidelines 
 
 The FGlT library is licensed under the [GNU general public
