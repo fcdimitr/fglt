@@ -32,14 +32,14 @@ for p = 1:8
   end
   
   figure(1)
-  semilogy([median(tOrca).' median(tFGLT).'],'o-')
+  plot([median(tOrca).' median(tFGLT).'],'o-')
   legend({'ORCA', 'FGLT'})
   xlabel('degree')
   ylabel('Time (sec)')
   drawnow
   
   figure(2)
-  semilogy([min(tOrca).' median(tOrca).' max(tOrca).' ...
+  plot([min(tOrca).' median(tOrca).' max(tOrca).' ...
     min(tFGLT).' median(tFGLT).' max(tFGLT).'],'o-')
   
   drawnow
