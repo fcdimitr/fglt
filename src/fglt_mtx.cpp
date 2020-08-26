@@ -11,13 +11,9 @@
 #include <fstream>
 #include <cassert>
 #include <limits>
+#include <string.h>
 
 #include "../lib/fglt.hpp"
-
-constexpr unsigned int str2int(const char* str, int h = 0)
-{
-    return !str[h] ? 5381 : (str2int(str, h+1) * 33) ^ str[h];
-}
 
 void readMTX
 (
@@ -49,37 +45,23 @@ void readMTX
   fin >> mmx >> b1 >> b2 >> b3 >> b4;
 
   // parse banner
-  switch ( str2int(b1) ) {
-  case str2int( "matrix" ):
-     break;
-  default:
+  if ( !strcmp( b1, "matrix" ) ){
     std::cerr << "Currently works only with 'matrix' option, aborting..." << std::endl;
     exit(1);
-    break;
   }
 
-  switch ( str2int(b2) ) {
-  case str2int( "coordinate" ):
-     break;
-  default:
+  if ( !strcmp( b1, "coordinate" ) ){
     std::cerr << "Currently works only with 'coordinate' option, aborting..." << std::endl;
     exit(1);
-    break;
   }
   
-  switch ( str2int(b3) ) {
-  case str2int( "pattern" ):
-    break;
-  default:
+  if ( !strcmp( b1, "pattern" ) ){
     std::cerr << "Currently works only with 'pattern' format, aborting..." << std::endl;
     exit(1);
-    break;
   }
 
-  switch ( str2int(b4) ) {
-  case str2int( "symmetric" ):
+  if ( strcmp( b1, "symmetric" ) ){
     issymmetric = true;
-    break;
   }
 
 
