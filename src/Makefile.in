@@ -103,7 +103,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_fglt_OBJECTS = fglt_mtx.$(OBJEXT)
 fglt_OBJECTS = $(am_fglt_OBJECTS)
-fglt_LDADD = $(LDADD)
+fglt_DEPENDENCIES = ../lib/libfglt.a
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -271,8 +271,8 @@ top_srcdir = @top_srcdir@
 
 # what flags you want to pass to the C compiler & linker
 AM_CXXFLAGS = -Wall -O2 -std=c++11
-AM_LDFLAGS = ../lib/libfglt.a
 fglt_SOURCES = fglt_mtx.cpp ../lib/fglt.hpp
+fglt_LDADD = ../lib/libfglt.a
 all: all-am
 
 .SUFFIXES:
