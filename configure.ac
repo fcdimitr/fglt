@@ -16,6 +16,9 @@ printf "\nSetup language to C++\n\n"
 # Switch to a C++ compiler, and check if it works.
 AC_LANG(C++)
 
+# DO NOT use the -O2 -g default
+: ${CXXFLAGS=""}
+
 # Checks for programs.
 AC_PROG_CXX
 
