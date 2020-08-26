@@ -112,6 +112,10 @@ conduct](https://github.com/fcdimitr/fglt/blob/master/CODE_OF_CONDUCT.md).
 *Design and development*:\
 Dimitris Floros<sup>1</sup>, Nikos Pitsianis<sup>1,2</sup>, 
 Xiaobai Sun<sup>2</sup>\
+
+*Development of Julia and Python wrappers*:\
+Jason Barmparesos<sup>1</sup>
+
 <sup>1</sup> Department of Electrical and Computer Engineering,
 Aristotle University of Thessaloniki, Thessaloniki 54124, Greece\
 <sup>2</sup> Department of Computer Science, Duke University, Durham, NC
