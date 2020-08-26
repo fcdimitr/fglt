@@ -160,11 +160,32 @@ void readMTX
 
 
 std::ostream& output(std::ostream& outfile, double** arr, int rows, int cols) {
+
+  outfile
+    << "\"Node id (0-based)\","
+    << "\"[0] vertex (==1)\","
+    << "\"[1] degree\","
+    << "\"[2] 2-path\","
+    << "\"[3] bifork\","
+    << "\"[4] 3-cycle\","
+    << "\"[5] 3-path, end\","
+    << "\"[6] 3-path, interior\","
+    << "\"[7] claw, leaf\","
+    << "\"[8] claw, root\","
+    << "\"[9] paw, handle\","
+    << "\"[10] paw, base\","
+    << "\"[11] paw, center\","
+    << "\"[12] 4-cycle\","
+    << "\"[13] diamond, off-cord\","
+    << "\"[14] diamond, on-cord\","
+    << "\"[15] 4-clique\""
+    << std::endl;
   
   for (int i = 0; i < rows; i++){
-    for(int j = 0; j < cols; j++)
-      outfile << arr[j][i] << " ";
-    outfile << std::endl;
+    outfile << i << ",";
+    for(int j = 0; j < cols-1; j++)
+      outfile << arr[j][i] << ",";
+    outfile << arr[cols-1][i] << std::endl;
   }
   return outfile;
 }
@@ -204,10 +225,10 @@ int main(int argc, char **argv)
   np = getWorkers();
   compute(f,fn,row,col,n,m,np);
 
-  std::cout << "Computation complete, outputting frequency counts to 'freq_net.txt'" << std::endl;
+  std::cout << "Computation complete, outputting frequency counts to 'freq_net.csv'" << std::endl;
   
   // output
-  std::fstream ofnet("freq_net.txt", std::ios::out );
+  std::fstream ofnet("freq_net.csv", std::ios::out );
 
   if ( ofnet.is_open() ){
     output( ofnet, fn, n, NGRAPHLET );

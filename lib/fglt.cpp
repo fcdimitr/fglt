@@ -140,23 +140,6 @@ static void compute_d13
 }
 
 
-static void intersection(int *joint, int *arr1, int *arr2, int m, int n) 
-{ 
-  int i = 0, j = 0, k = 0; 
-  while (i < m && j < n) 
-  { 
-    if (arr1[i] < arr2[j]) 
-      i++; 
-    else if (arr2[j] < arr1[i]) 
-      j++; 
-    else /* if arr1[i] == arr2[j] */
-    { 
-      joint[k++] = arr2[j++]; 
-      i++; 
-    } 
-  } 
-} 
-
 static void compute_k4
 (
  double *f15,
@@ -497,14 +480,9 @@ extern "C" int compute
   // merge k4 counts
   FOR (mwIndex i=0; i<n;i++){
 
-#ifdef HAVE_CILK_CILK_H
-    int ip = __cilkrts_get_worker_number();
-#else
-    int ip = 0;
-#endif
     
-    for (mwIndex ip=0; ip<np;ip++)
-      f[15][i] += k4num[ip*n + i];
+    for (mwIndex it=0; it<np;it++)
+      f[15][i] += k4num[it*n + i];
 
     
     // transform to net

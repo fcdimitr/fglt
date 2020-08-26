@@ -71,7 +71,7 @@ in `freq_net.txt`. For example,
     wget https://suitesparse-collection-website.herokuapp.com/MM/Pajek/GD96_c.tar.gz --no-check-certificate
     tar -xzvf GD96_c.tar.gz
     fglt GD96_c/GD96_c.mtx
-    less freq_net.txt
+    less freq_net.csv
 
 ## MATLAB interface 
 
