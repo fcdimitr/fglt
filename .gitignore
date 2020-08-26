@@ -1,1 +1,10 @@
 build
+*~
+*.o
+*.mexmaci64
+*.mexa64
+docs/html/
+autom4te.cache/
+auto/
+README.html
+wordcount.lua
