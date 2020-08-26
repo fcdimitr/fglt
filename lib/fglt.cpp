@@ -368,7 +368,7 @@ static int all_nonzero
   
 
 
-extern "C" void compute
+extern "C" int compute
 (
  double ** const f,
  double ** const fn,
@@ -390,6 +390,11 @@ extern "C" void compute
   double *t02 = (double *) calloc( n, sizeof(double) );
   double *t04 = (double *) calloc( n, sizeof(double) );
 
+  if ( t00 == NULL || t01 == NULL || t02 == NULL || t04 == NULL ){
+    printf( "Working memory allocation failed at helpers, aborting...\n" );
+    return 1;
+  }
+    
 
 
   FOR (mwSize i=0;i<n;i++) {
@@ -411,6 +416,10 @@ extern "C" void compute
   double *c3 = (double *) calloc( m, sizeof(double) );
   int *isNgbh = (int *) calloc( n*np, sizeof(int) );
 
+  if ( fl == NULL || pos == NULL || isUsed == NULL || c3 == NULL || isNgbh == NULL ){
+    printf( "Working memory allocation failed at auxilliary vectors, aborting...\n" );
+    return 1;
+  }
   
   // --- first pass
   FOR (mwIndex i=0; i<n;i++) {
@@ -450,6 +459,12 @@ extern "C" void compute
 
   mwIndex *k4cmn   = (mwIndex *) calloc( n*np, sizeof(mwIndex) );
   double  *k4num   = (double *)  calloc( n*np, sizeof(mwIndex) );
+
+  if ( k4cmn == NULL || k4num == NULL ){
+    printf( "Working memory allocation failed at K_4 auxilliary vectors, aborting...\n" );
+    return 1;
+  }
+  
   
   // --- second pass
   FOR (mwIndex i=0; i<n;i++) {
@@ -507,5 +522,6 @@ extern "C" void compute
 
   printf( "Total elapsed time: %.4f sec\n", toc( timer_all ) );
   
+  return 0;
   
 }

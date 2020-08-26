@@ -30,6 +30,7 @@ typedef size_t    mwIndex;        /* unsigned pointer-width integer */
 
 #define NGRAPHLET 16
 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -49,10 +50,11 @@ int getWorkers();
  * \param ii [in] The column indices of the adjacency matrix.
  * \param jStart [in] The first non-zero row index of each column.
  * \param n [in] The number of columns of the adjacency matrix.
- * \param m [in] The number of edges in the graph.
+ * \param m [in] The number of nonzero elements in the adjacency matrix.
  * \param np [in] The number of parallel workers to use for the transform.
+ * \return status (0: success, otherwise error)
  */
-void compute
+int compute
   (
    double ** const f,
    double ** const fn,

@@ -4,12 +4,12 @@
 
 #define ERROR(message)                                      \
 {                                                           \
-    mexErrMsgIdAndTxt ("GrB:error", message) ;              \
+    mexErrMsgIdAndTxt ("FGlT:error", message) ;              \
 }
 
 #define USAGE "usage: [Fnet, Fraw] = fgt (A) ; A must be sparse"
 
-void usage_info       // check usage and make sure GrB.init has been called
+void usage_info       // check usage
 (
     bool ok,                // if false, then usage is not correct
     const char *message     // error message if usage is not correct
@@ -84,8 +84,9 @@ void mexFunction
   }
 
 
-  compute( f, fn, ii, jStart, n, m, np );
-  
+  if ( compute( f, fn, ii, jStart, n, m, np ) ) // anything other than zero is an error code
+    ERROR("Computation aborted.") ;
+
 
   if (nargout <= 1){
     for (int igraph = 0; igraph < NGRAPHLET; igraph++)
