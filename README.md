@@ -18,6 +18,8 @@
 
 We introduce...
 
+![](figs/table-overview.png)
+
 # Getting started 
 
 ## System environment 
