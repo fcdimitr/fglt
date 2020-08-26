@@ -11,6 +11,7 @@
     -   [Installation](#installation)
     -   [Usage demo](#usage-demo)
     -   [MATLAB interface](#matlab-interface)
+    -   [Julia wrapper](#julia-wrapper)
 -   [License and community guidelines](#license-and-community-guidelines)
 -   [Contributors](#contributors)
 
@@ -87,10 +88,14 @@ A `MATLAB` demo script is provided under `MATLAB`:
     
 which showcases the use of FGλT on a couple of test graphs.
 
+## Julia wrapper
+
+You can use FGλT with Julia with the [FGLT.jl](https://github.com/NorthSailor/FGLT.jl) package.
+
 # Building with Meson
 
-You can use [Meson](mesonbuild.com) to build a shared library and link the demo executable against it.
-You need to build the shared library to use FGλT with Julia or Python.
+You can use [Meson](https://mesonbuild.com) to build a shared library and link the demo executable against it.
+You need to build the shared library to use FGλT with [Julia](https://github.com/NorthSailor/FGLT.jl) or Python.
 
 After installing meson and ninja, you can simply run:
 
