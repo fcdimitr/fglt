@@ -45,22 +45,22 @@ void readMTX
   fin >> mmx >> b1 >> b2 >> b3 >> b4;
 
   // parse banner
-  if ( !strcmp( b1, "matrix" ) ){
+  if ( strcmp( b1, "matrix" ) ){
     std::cerr << "Currently works only with 'matrix' option, aborting..." << std::endl;
     exit(1);
   }
 
-  if ( !strcmp( b1, "coordinate" ) ){
+  if ( strcmp( b2, "coordinate" ) ){
     std::cerr << "Currently works only with 'coordinate' option, aborting..." << std::endl;
     exit(1);
   }
   
-  if ( !strcmp( b1, "pattern" ) ){
+  if ( strcmp( b3, "pattern" ) ){
     std::cerr << "Currently works only with 'pattern' format, aborting..." << std::endl;
     exit(1);
   }
 
-  if ( strcmp( b1, "symmetric" ) ){
+  if ( !strcmp( b4, "symmetric" ) ){
     issymmetric = true;
   }
 
