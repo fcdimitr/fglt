@@ -111,7 +111,7 @@ where `<filename>` is the path to a sparse matrix stored in symmetric,
 coordinate, MatrixMarket format. The graphlet frequencies are exported
 in the file `freq_net.csv`, within the working directory. For example,
 
-    fglt testdata/s12.mtx
+    fglt ../testdata/s12.mtx
     less freq_net.csv
 
 ## Python
