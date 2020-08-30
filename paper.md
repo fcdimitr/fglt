@@ -133,11 +133,6 @@ sparser networks. The experiments are carried out on an Intel Xeon
 E5-2640 v4, with $10$ cores (up to $20$ concurrent threads via
 hyper-threading) and 700 GB of DDR4 RAM. Cilk [@blumofe1996] is used for
 multi-threaded programming. The $12$ networks are from 
-[DIMACS10](http://sparse.tamu.edu/DIMACS10): 
-[smallworld](http://sparse.tamu.edu/DIMACS10/smallworld), 
-and from 
-[SNAP](http://snap.stanford.edu/data):
-[com-Amazon](http://sparse.tamu.edu/SNAP/com-Amazon),
-\label{tab:experiments}](figs/experiments-curated.png)
+[DIMACS10](http://sparse.tamu.edu/DIMACS10).\label{tab:experiments}](figs/experiments-curated.png)
 
 # References
