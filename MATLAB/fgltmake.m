@@ -6,6 +6,10 @@ function fgltmake (what)
 %
 % See also mex, version.
 
+% Based upon gbmake.m from
+% SuiteSparse:GraphBLAS, Timothy A. Davis, (c) 2017-2020, All Rights Reserved.
+% http://suitesparse.com   See GraphBLAS/Doc/License.txt for license.
+  
 have_octave = (exist ('OCTAVE_VERSION', 'builtin') == 5) ;
 
 if (have_octave)
