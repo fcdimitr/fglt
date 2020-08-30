@@ -71,7 +71,7 @@ After installing `meson` and `ninja`, you can install FGlT:
 
 To specify the `C++` compiler:
 
-    env CXX=<compiler-executable> meson build
+    env CXX=g++-7 meson build
     
 for example, to use the [OpenCilk](http://cilk.mit.edu) compiler,
 installed under `/usr/pkg/opencilk`, you can install FGlT using the command
