@@ -1,7 +1,5 @@
-# FGλT <br/> Fast Graphlet Transform
+# FGlT <br/> Fast Graphlet Transform
 
-[![DOI](http://joss.theoj.org/papers/10.21105/joss.01577/status.svg)](https://doi.org/10.21105/joss.01577)
-[![DOI](https://zenodo.org/badge/196885143.svg)](https://zenodo.org/badge/latestdoi/196885143)
 [![GitHub license](https://img.shields.io/github/license/fcdimitr/fglt.svg)](https://github.com/fcdimitr/flgt/blob/master/LICENCE)
 [![GitHub issues](https://img.shields.io/github/issues/fcdimitr/fglt.svg)](https://github.com/fcdimitr/fglt/issues/)
 
@@ -25,12 +23,12 @@ We introduce...
 
 ## System environment 
 
-The FGλT library has been tested under Ubuntu 18.04 and macOS Catalina
+The FGlT library has been tested under Ubuntu 18.04 and macOS Catalina
 v10.15.6. The only prerequisite is a `C++` compiler (optionally, with `cilk` support, see [Installation](#installation))
 
 ## Installation 
 
-To generate the FGλT library and program:
+To generate the FGlT library and program:
 
     mkdir build; cd build
     ../configure
@@ -61,7 +59,7 @@ machine):
 
 ## Usage demo
 
-The FGλT executable is named `fglt`. Usage:
+The FGlT executable is named `fglt`. Usage:
     
     fglt <filename>
     
@@ -76,7 +74,7 @@ in `freq_net.txt`. For example,
 
 ## MATLAB interface 
 
-To build the `MATLAB` interface to FGλT, issue
+To build the `MATLAB` interface to FGlT, issue
 
     fgtmake
     
@@ -86,16 +84,16 @@ A `MATLAB` demo script is provided under `MATLAB`:
 
     demo.m
     
-which showcases the use of FGλT on a couple of test graphs.
+which showcases the use of FGlT on a couple of test graphs.
 
 ## Julia wrapper
 
-You can use FGλT with Julia with the [FGLT.jl](https://github.com/NorthSailor/FGLT.jl) package.
+You can use FGlT with Julia with the [FGLT.jl](https://github.com/NorthSailor/FGLT.jl) package.
 
 # Building with Meson
 
 You can use [Meson](https://mesonbuild.com) to build a shared library and link the demo executable against it.
-You need to build the shared library to use FGλT with [Julia](https://github.com/NorthSailor/FGLT.jl) or Python.
+You need to build the shared library to use FGlT with [Julia](https://github.com/NorthSailor/FGLT.jl) or Python.
 
 After installing meson and ninja, you can simply run:
 

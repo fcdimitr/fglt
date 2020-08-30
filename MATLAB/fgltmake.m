@@ -71,10 +71,10 @@ else
     object_suffix = '.o' ;
 end
 
-inc = '-I../build/lib/' ;
+inc = '-I../build/' ;
 
-ldflags      = '../build/lib/libfglt.a' ;
-ldflags_cilk = '-lcilkrts ../build/lib/libfglt.a' ;
+ldflags      = '../build/libfglt.a' ;
+ldflags_cilk = '-lcilkrts ../build/libfglt.a' ;
 
 hfiles = [ dir('*.h') ; dir('util/*.h') ] ;
 

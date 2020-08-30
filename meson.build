@@ -27,6 +27,8 @@ fglt_shared = shared_library('fglt', 'lib/fglt.cpp',
                              link_args: extralink,
                              install : true)
 
-executable('fglt', 'src/fglt_mtx.cpp',
+e = executable('fglt', 'src/fglt_mtx.cpp',
            link_with : fglt_shared,
            install : true)
+
+test('Briki-like test', e, args : [ '../testdata/briki-like.mtx' ])
