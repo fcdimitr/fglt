@@ -1,5 +1,5 @@
 ---
-title: FGlT: Fast Graphlet Transform'
+title: '${\rm FG}_{\ell}{\rm T}$: Fast Graphlet Transform'
 tags:
   - graphlet transform
   - graph analysis
