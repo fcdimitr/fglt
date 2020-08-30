@@ -85,8 +85,8 @@ single multi-core processor. The transform of network com-LiveJournal
 with 35 millions of edges takes less than 1 minute. The transform of
 network com-Friendster with 1.8 billions of edges takes about 2.5
 hours with $16$ threads while it takes 1.5 day with a single
-thread. The sequential computation alone substantially outpaces other
-available software with similar task in sequential computation.
+thread. The sequential computation alone
+substantially outpaces other available software.
 
 Figures & tables
 ================
