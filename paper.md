@@ -83,7 +83,13 @@ with 35 millions of edges takes less than 1 minute. The transform of
 network com-Friendster with 1.8 billions of edges takes about 2.5
 hours with $16$ threads while it takes 1.5 day with a single
 thread. The sequential computation alone
-substantially outpaces other available software.
+substantially outpaces other available software. The $12$ networks are from 
+[DIMACS10](http://sparse.tamu.edu/DIMACS10)
+[smallworld](http://sparse.tamu.edu/DIMACS10/smallworld), 
+and from 
+[SNAP](http://snap.stanford.edu/data):
+[com-Amazon](http://sparse.tamu.edu/SNAP/com-Amazon),
+
 
 Figures & tables
 ================
