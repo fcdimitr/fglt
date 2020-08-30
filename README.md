@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/fcdimitr/fglt.svg)](https://github.com/fcdimitr/flgt/blob/master/LICENCE)
 [![GitHub issues](https://img.shields.io/github/issues/fcdimitr/fglt.svg)](https://github.com/fcdimitr/fglt/issues/)
 
--   [Summary](#overview)
+-   [Summary](#summary)
 -   [Getting started](#getting-started)
     -   [System environment](#system-environment)
     -   [Prerequisites](#prerequisites)
@@ -18,7 +18,19 @@
 
 # Summary
 
-We introduce...
+We provide `FGlT`, a `C/C++` multi-threading library, for Fast
+Graphlet Transform of large, sparse, undirected networks/graphs. The
+graphlets in dictionary Σ<sub>16</sub>, shown in
+Figure 1, are used as encoding elements to capture
+topological connectivity quantitatively and transform a graph
+G=(V,E) into a |V| x 16 array of graphlet frequencies at all
+vertices. The 16-element vector at each vertex represents the
+frequencies of induced subgraphs, incident at the vertex, of the
+graphlet patterns. The transformed data array serves multiple types of
+network analysis: statistical or/and topological measures, comparison,
+classification, modeling, feature embedding and dynamic variation,
+among others. The library `FGlT` is distinguished in
+the following key aspects.
 
 ![](figs/table-overview.png)
 
