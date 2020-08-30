@@ -1,13 +1,11 @@
 import ctypes
 import pathlib
 import numpy as np
+import platform
 from scipy.io import mmread
 from scipy.sparse import isspmatrix_csc
 
 def fglt(A):
-    # # Convert input matrix to CSC format
-    # A = A.tocsc()
-
     # Check that input is sparse matrix in CSC format
     if not isspmatrix_csc(A):
         print('ERROR: Input must be a sparse matrix in CSC format(scipy.sparse.csc.csc_matrix)')
@@ -29,11 +27,18 @@ def fglt(A):
         exit()
         
     # Shared library location
-    libname =  "../build/libfglt.so"
+    if platform.system() == 'Linux':
+        libname =  '../build/libfglt.so'
+    elif platform.system() == 'Darwin':
+        libname = '../build/libfglt.dylib'
+    else:
+        print('ERROR: Python wrapper is not supported for system yet')
+        exit()
+
     try:
         c_lib = ctypes.CDLL(libname)
     except:
-        print('ERROR: libfglt.so file not found. Make sure you followed the build instructions correctly')
+        print('ERROR: shared library file not found. Make sure you followed the build instructions correctly')
         exit()
 
     ### Prepare arguments for C++ function. For detailed documentation
