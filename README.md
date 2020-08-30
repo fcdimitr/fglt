@@ -10,7 +10,7 @@
     -   [Installation](#installation)
     -   [Testing](#testing)
     -   [Usage demo](#usage-demo)
-    -   [Python](#python)
+    -   [Python 3](#python-3)
     -   [Julia](#julia)
     -   [MATLAB](#matlab)
 -   [License and community guidelines](#license-and-community-guidelines)
@@ -114,7 +114,7 @@ in the file `freq_net.csv`, within the working directory. For example,
     fglt ../testdata/s12.mtx
     less freq_net.csv
 
-## Python
+## Python 3
 
 In order to run the `fglt()` C++ function we will need the [ctypes](https://docs.python.org/3/library/ctypes.html) and scipy libraries:
 
