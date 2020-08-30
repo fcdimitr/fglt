@@ -77,15 +77,9 @@ amount of data revisits, memory access latency, and imbalance among
 multi-threaded computation.
 
 We illustrate in \autoref{tab:experiments} the timing results with
-$12$ networks of various types and sizes. All the experiments are on a
-single multi-core processor. The transform of network com-LiveJournal
-with 35 millions of edges takes less than 1 minute. The transform of
-network com-Friendster with 1.8 billions of edges takes about 2.5
-hours with $16$ threads while it takes 1.5 day with a single
-thread. The sequential computation alone
-substantially outpaces other available software. 
-The $12$ networks are from 
-[DIMACS10](http://sparse.tamu.edu/DIMACS10)
+$12$ networks of various types and sizes. 
+The networks are from 
+[DIMACS10](http://sparse.tamu.edu/DIMACS10):
 [smallworld](http://sparse.tamu.edu/DIMACS10/smallworld), 
 [598a](http://sparse.tamu.edu/DIMACS10/598a), 
 [preferentialAttachment](http://sparse.tamu.edu/DIMACS10/preferentialAttachment), 
@@ -100,6 +94,14 @@ and from
 [com-LiveJournal](http://sparse.tamu.edu/SNAP/com-LiveJournal}),
 [com-Orkut](http://sparse.tamu.edu/SNAP/com-Orkut), and
 [com-Friendster](http://sparse.tamu.edu/SNAP/com-Friendster).
+All the experiments are on a
+single multi-core processor. The transform of network com-LiveJournal
+with 35 millions of edges takes less than 1 minute. The transform of
+network com-Friendster with 1.8 billions of edges takes about 2.5
+hours with $16$ threads while it takes 1.5 day with a single
+thread. The sequential computation alone
+substantially outpaces other available software. 
+
 
 
 Figures & tables
