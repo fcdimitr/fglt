@@ -41,18 +41,15 @@ serves multiple types of network analysis: statistical or/and
 topological measures, comparison, classification, modeling, feature
 embedding and dynamic variation, among others. The library
 ${\rm FG}_{\ell}{\rm T}$ is distinguished in the following key aspects.
-
-It is based on the fast, sparse and exact transform formulas
+(1) It is based on the fast, sparse and exact transform formulas
 in [@floros2020b], which are of the lowest time and space complexities
 among known algorithms, and, at the same time, in ready form for
 globally streamlined computation in matrix-vector operations.
-
-It leverages prevalent multi-core processors, with multi-threaded
+(2) It leverages prevalent multi-core processors, with multi-threaded
 programming in `Cilk` [@blumofe1996], and uses sparse graph computation
 techniques to deliver high-performance network analysis to individual
 laptops or desktop computers.
-
-It has `Python`, `Julia`, and `MATLAB` interfaces for easy integration
+(3) It has `Python`, `Julia`, and `MATLAB` interfaces for easy integration
 with, and extension of, existing network analysis software.
 
 Statement of need
