@@ -24,27 +24,43 @@ We introduce...
 ## System environment 
 
 The FGlT library has been tested under Ubuntu 18.04 and macOS Catalina
-v10.15.6. The only prerequisite is a `C++` compiler (optionally, with `cilk` support, see [Installation](#installation))
+v10.15.6. The prerequisites is a `C++` compiler (optionally, with
+`cilk` support, see [Installation](#installation)) and the
+[Meson](https://mesonbuild.com) package with
+[Ninja](https://ninja-build.org) support.
+
+## Prerequisites
+
+You can install `meson` and `ninja` issuing
+
+    pip install meson
+    pip install ninja
 
 ## Installation 
 
-To generate the FGlT library and program:
+After installing `meson` and `ninja`, you can install FGlT:
 
-    mkdir build; cd build
-    ../configure
-    make all
+    meson build
+    cd build
+    ninja
 
 To specify the `C++` compiler:
 
-    ./configure CXX=<compiler-executable>
+    env CXX=<compiler-executable> meson build
+    
+for example, to use the [OpenCilk](http://cilk.mit.edu) compiler,
+installed under `/usr/pkg/opencilk`, you can install FGlT using the command
+
+    env CXX=/usr/pkg/opencilk/bin/clang++ meson build
 
 *Note*: If the specified compiler supports `cilk`, the compiled
 program will automatically use `cilk` for parallelism. Otherwise, the
 program will run in sequential mode.
 
-If you wish to install the executable `fglt`, issue:
+If you wish to install system-wide the header files, libraries, and
+the `fglt` executable, issue:
 
-    make install
+    ninja install
     
 *Note*: Depending on your setup, you might need `sudo` privileges for
 this operation.
@@ -56,6 +72,13 @@ machine):
     make
     open html/index.html
 
+## Testing
+
+To test whether installation was successful, issue
+
+    ninja test
+    
+under `build` directory.
 
 ## Usage demo
 
@@ -65,18 +88,35 @@ The FGlT executable is named `fglt`. Usage:
     
 where `<filename>` is the path to a sparse matrix stored in symmetric,
 coordinate, MatrixMarket format. The graphlet frequencies are exported
-in `freq_net.txt`. For example,
+in the file `freq_net.csv`, within the working directory. For example,
 
-    wget https://suitesparse-collection-website.herokuapp.com/MM/Pajek/GD96_c.tar.gz --no-check-certificate
-    tar -xzvf GD96_c.tar.gz
-    fglt GD96_c/GD96_c.mtx
+    fglt testdata/s12.mtx
     less freq_net.csv
 
-## MATLAB interface 
+## Python
+
+In order to run the `fglt()` C++ function we will need the [ctypes](https://docs.python.org/3/library/ctypes.html) and scipy libraries:
+
+    pip install ctypes
+    pip install scipy
+
+A `Python` demo script is provided under `python`, which can be invoked by:
+
+    python demo.py
+    
+and showcases the use of FGlT on a couple of test graphs.
+
+## Julia
+
+You can use FGlT with Julia with the
+[FGLT.jl](https://github.com/NorthSailor/FGLT.jl) package. Further
+instructions and demo scripts are available within.
+
+## MATLAB
 
 To build the `MATLAB` interface to FGlT, issue
 
-    fgtmake
+    fgltmake
     
 in `MATLAB` command window, under `MATLAB` directory.
 
@@ -85,22 +125,6 @@ A `MATLAB` demo script is provided under `MATLAB`:
     demo.m
     
 which showcases the use of FGlT on a couple of test graphs.
-
-## Julia wrapper
-
-You can use FGlT with Julia with the [FGLT.jl](https://github.com/NorthSailor/FGLT.jl) package.
-
-# Building with Meson
-
-You can use [Meson](https://mesonbuild.com) to build a shared library and link the demo executable against it.
-You need to build the shared library to use FGlT with [Julia](https://github.com/NorthSailor/FGLT.jl) or Python.
-
-After installing meson and ninja, you can simply run:
-
-    meson build
-    cd build
-    ninja
-    sudo ninja install # optional: install the shared library system-wide
 
 # License and community guidelines 
 
@@ -119,7 +143,7 @@ Dimitris Floros<sup>1</sup>, Nikos Pitsianis<sup>1,2</sup>,
 Xiaobai Sun<sup>2</sup>\
 
 *Development of Julia and Python wrappers*:\
-Jason Barmparesos<sup>1</sup>
+Jason Barmparesos<sup>1</sup>, Konstantinos Kitsios<sup>1</sup>
 
 <sup>1</sup> Department of Electrical and Computer Engineering,
 Aristotle University of Thessaloniki, Thessaloniki 54124, Greece\

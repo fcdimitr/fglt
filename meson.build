@@ -31,4 +31,9 @@ e = executable('fglt', 'src/fglt_mtx.cpp',
            link_with : fglt_shared,
            install : true)
 
-test('Briki-like test', e, args : [ '../testdata/briki-like.mtx' ])
+# tests
+
+t1 = find_program( 'testdata/test_s6.sh')
+t2 = find_program( 'testdata/test_s12.sh')
+test('Validation on s6 synthetic graph', t1, is_parallel : false)
+test('Validation on s12 synthetic graph', t2, is_parallel : false)

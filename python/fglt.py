@@ -60,10 +60,10 @@ def fglt(A):
     fn = ((ctypes.c_double*nValue)*16)()
     # Proper way to pass 2D array to C++, see here:
     # https://stackoverflow.com/questions/36579885/using-ctypes-to-pass-2d-array-of-ints-from-python-to-c
-    p_fn = (ctypes.POINTER(ctypes.c_double)*nValue)(*fn)
+    p_fn = (ctypes.POINTER(ctypes.c_double)*16)(*fn)
     # Output matrix of net frequencies (nx16)
     f =  ((ctypes.c_double*nValue)*16)()
-    p_f = (ctypes.POINTER(ctypes.c_double)*nValue)(*f)
+    p_f = (ctypes.POINTER(ctypes.c_double)*16)(*f)
 
     # Call the C++ function
     c_lib.compute(ctypes.byref(p_f), ctypes.byref(p_fn), ii, jStart, n, m, npw)
