@@ -39,10 +39,11 @@ the following key aspects.
 ## System environment 
 
 The FGlT library has been tested under Ubuntu 18.04 and macOS Catalina
-v10.15.6. The prerequisites is a `C++` compiler (optionally, with
-`cilk` support, see [Installation](#installation)) and the
+v10.15.6. The prerequisites is a `C++` compiler and the
 [Meson](https://mesonbuild.com) package with
-[Ninja](https://ninja-build.org) support.
+[Ninja](https://ninja-build.org) support. If the specified compiler
+supports `cilk`, the compiled program will automatically use `cilk`
+for parallelism. Otherwise, the program will run in sequential mode.
 
 ## Prerequisites
 
@@ -67,10 +68,6 @@ for example, to use the [OpenCilk](http://cilk.mit.edu) compiler,
 installed under `/usr/pkg/opencilk`, you can install FGlT using the command
 
     env CXX=/usr/pkg/opencilk/bin/clang++ meson build
-
-*Note*: If the specified compiler supports `cilk`, the compiled
-program will automatically use `cilk` for parallelism. Otherwise, the
-program will run in sequential mode.
 
 If you wish to install system-wide the header files, libraries, and
 the `fglt` executable, issue:
