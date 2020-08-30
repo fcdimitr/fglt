@@ -91,7 +91,7 @@ and from
 [SNAP](http://snap.stanford.edu/data):
 [com-Amazon](http://sparse.tamu.edu/SNAP/com-Amazon),
 [loc-Gowalla](http://sparse.tamu.edu/SNAP/loc-Gowalla),
-[com-LiveJournal](http://sparse.tamu.edu/SNAP/com-LiveJournal}),
+[com-LiveJournal](http://sparse.tamu.edu/SNAP/com-LiveJournal),
 [com-Orkut](http://sparse.tamu.edu/SNAP/com-Orkut), and
 [com-Friendster](http://sparse.tamu.edu/SNAP/com-Friendster).
 All the experiments are on a
