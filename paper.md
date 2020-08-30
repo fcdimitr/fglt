@@ -104,7 +104,7 @@ substantially outpaces other available software.
 
 
 
-Figures & tables
+Figures
 ================
 
 ![Dictionary $\Sigma_{16}$ of $16$ graphlets. In each graphlet, the
