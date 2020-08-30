@@ -42,8 +42,7 @@ The FGlT library has been tested under Ubuntu 18.04 and macOS Catalina
 v10.15.6. The prerequisites is a `C++` compiler and the
 [Meson](https://mesonbuild.com) package with
 [Ninja](https://ninja-build.org) support. If the specified compiler
-supports `cilk`, the compiled program will automatically use `cilk`
-for parallelism. Otherwise, the program will run in sequential mode.
+supports `cilk`, the compiled program will run in parallel.
 
 ## Prerequisites
 
