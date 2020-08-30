@@ -1,5 +1,6 @@
 import ctypes
 import pathlib
+import numpy as np
 from scipy.io import mmread
 from scipy.sparse import isspmatrix_csc
 
@@ -49,7 +50,7 @@ def fglt(A):
     # Number of zeros of A
     m = ctypes.c_size_t(A.nnz)
     # Number of parallel workers(always 1)
-    np = ctypes.c_size_t(1)
+    npw = ctypes.c_size_t(1)
     # Output matrix of raw frequencies (nx16)
     fn = ((ctypes.c_double*nValue)*16)()
     # Proper way to pass 2D array to C++, see here:
@@ -60,11 +61,11 @@ def fglt(A):
     p_f = (ctypes.POINTER(ctypes.c_double)*nValue)(*f)
 
     # Call the C++ function
-    c_lib.compute(ctypes.byref(p_f), ctypes.byref(p_fn), ii, jStart, n, m, np)
+    c_lib.compute(ctypes.byref(p_f), ctypes.byref(p_fn), ii, jStart, n, m, npw)
 
     # Prepare the values to return
-    fn_ret = [[0]*16]*nValue
-    f_ret  = [[0]*16]*nValue
+    fn_ret = np.zeros((nValue, 16))
+    f_ret  = np.zeros((nValue, 16))
     for i in range(nValue):
         for j in range(16):
             fn_ret[i][j] = p_fn[j][i]
