@@ -121,7 +121,7 @@ In order to run the `fglt()` C++ function we will need the [ctypes](https://docs
     pip install ctypes
     pip install scipy
 
-A `Python` demo script is provided under `python`, which can be invoked by:
+A `Python` demo script is provided under the `python` directory, which can be invoked by:
 
     python demo.py
     
