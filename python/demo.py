@@ -5,9 +5,9 @@ if __name__ == '__main__':
     # Code to obtain matrix A goes here
     # We will just load it from the file
     try:
-        A = mmread('../build/GD96_c/GD96_c.mtx')
+        A = mmread('../testdata/s12.mtx')
     except:
-        print('ERROR: File GD96_c.mtx not found. Make sure you followed the previous instructions at Usage Demo.')
+        print('ERROR: File not found. Download again from GitHub project page.')
         exit()
         
     print('Starting Calculations')
