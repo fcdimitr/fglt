@@ -85,7 +85,7 @@ The networks are from
 [preferentialAttachment](http://sparse.tamu.edu/DIMACS10/preferentialAttachment), 
 [144](http://sparse.tamu.edu/DIMACS10/144), 
 [vsp_model1](http://sparse.tamu.edu/DIMACS10/vsp_model1_crew1_cr42_south31), 
-[vsp-south31-slptsk](http://sparse.tamu.edu/DIMACS10/vsp-south31-slptsk), and
+[vsp-south31-slptsk](http://sparse.tamu.edu/DIMACS10/vsp_south31_slptsk), and
 [coPapersDBLP](http://sparse.tamu.edu/DIMACS10/coPapersDBLP), 
 and from 
 [SNAP](http://snap.stanford.edu/data):
