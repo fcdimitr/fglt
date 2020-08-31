@@ -1,44 +1,42 @@
 import ctypes
 import pathlib
+import os
 import numpy as np
 import platform
-from scipy.io import mmread
 from scipy.sparse import isspmatrix_csc
+
 
 def fglt(A):
     # Check that input is sparse matrix in CSC format
     if not isspmatrix_csc(A):
-        print('ERROR: Input must be a sparse matrix in CSC format(scipy.sparse.csc.csc_matrix)')
-        exit()
+        raise ValueError('Input must be a sparse matrix in CSC format(scipy.sparse.csc.csc_matrix)')
 
     # Check that input is symmetric matrix
     if (A != A.T).nnz != 0:
-        print('ERROR: Input must be a symmetric matrix')
-        exit()
+        raise ValueError('Input must be a symmetric matrix')
 
     # Check that input matrix is binary(only 1s and 0s)
     if not all(A.data == 1):
-        print('Error: Input must be a binary matrix, with either 1s or 0s')
-        exit()
+        raise ValueError('Input must be a binary matrix, with either 1s or 0s')
 
     # Check that input matrix is zero in the diagonal
     if A.diagonal().any():
-        print('Error: Input must be zero in the diagonal')
-        exit()
-        
+        raise ValueError('Input must be zero in the diagonal')
+
     # Shared library location
+    dirname = os.path.dirname(__file__)
     if platform.system() == 'Linux':
-        libname =  '../build/libfglt.so'
+        libname = os.path.join(dirname, '../build/libfglt.so')
     elif platform.system() == 'Darwin':
-        libname = '../build/libfglt.dylib'
+        libname = os.path.join(dirname, '../build/libfglt.dylib')
     else:
         print('ERROR: Python wrapper is not supported for system yet')
         exit()
 
     try:
         c_lib = ctypes.CDLL(libname)
-    except:
-        print('ERROR: shared library file not found. Make sure you followed the build instructions correctly')
+    except FileNotFoundError:
+        raise FileNotFoundError('ERROR: shared library file not found. Make sure you followed the build instructions correctly')
         exit()
 
     ### Prepare arguments for C++ function. For detailed documentation
@@ -62,7 +60,7 @@ def fglt(A):
     # https://stackoverflow.com/questions/36579885/using-ctypes-to-pass-2d-array-of-ints-from-python-to-c
     p_fn = (ctypes.POINTER(ctypes.c_double)*16)(*fn)
     # Output matrix of net frequencies (nx16)
-    f =  ((ctypes.c_double*nValue)*16)()
+    f = ((ctypes.c_double*nValue)*16)()
     p_f = (ctypes.POINTER(ctypes.c_double)*16)(*f)
 
     # Call the C++ function
