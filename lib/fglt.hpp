@@ -1,8 +1,6 @@
 /*!
   \file   fglt.hpp
-  \brief  
-
-  <long description>
+  \brief  Header file containing basic function definitinos for FGlT
 
   \author Dimitris Floros
   \date   2020-08-18
