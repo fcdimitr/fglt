@@ -3,12 +3,12 @@ name: ci_meson
 on:
   push:
     paths:
-      - "**.c"
-      - "**.h"
+      - "**.cpp"
+      - "**.hpp"
   pull_request:
     paths:
-      - "**.h"
-      - "**.h"
+      - "**.cpp"
+      - "**.hpp"
 
 jobs:
 
