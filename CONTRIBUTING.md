@@ -106,7 +106,7 @@ Please try to follow the style conventions in the FGlT repository when submittin
     self-documented if possible (avoid referring to descriptions in
     existing issues or pull requests).
 -   Function interface documentation should be comprehensive and follow the
-    format of existing functions (e.g., `sgtsnepi`).
+    format of existing functions.
 -   Function and variable names are in `camelCase`; script names are in
     `snake_case`.  Typically, matrix/array names start with an uppercase
     letter, while scalar/vector/function names start with a lowercase
