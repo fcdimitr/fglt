@@ -2,6 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/fcdimitr/fglt.svg)](https://github.com/fcdimitr/fglt/blob/master/LICENCE)
 [![GitHub issues](https://img.shields.io/github/issues/fcdimitr/fglt.svg)](https://github.com/fcdimitr/fglt/issues/)
+![ci_meson](https://github.com/fcdimitr/fglt/workflows/ci_meson/badge.svg)
 
 -   [Summary](#summary)
 -   [Getting started](#getting-started)
