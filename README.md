@@ -117,9 +117,8 @@ in the file `freq_net.csv`, within the working directory. For example,
 
 ## Python 3
 
-In order to run the `fglt()` C++ function we will need the [ctypes](https://docs.python.org/3/library/ctypes.html) and scipy libraries:
+In order to run the `fglt()` C++ function we will need the scipy library:
 
-    pip install ctypes
     pip install scipy
 
 A `Python` demo script is provided under the `python` directory, which can be invoked by:
