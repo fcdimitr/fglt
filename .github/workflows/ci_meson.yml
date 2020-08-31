@@ -1,0 +1,50 @@
+name: ci_meson
+
+on:
+  push:
+    paths:
+      - "**.cpp"
+      - "**.hpp"
+  pull_request:
+    paths:
+      - "**.cpp"
+      - "**.hpp"
+
+jobs:
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - run: pip install meson ninja
+    - run: meson setup build
+      env:
+        CXX: g++
+    - run: meson test -C build -v
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: Linux_Meson_Testlog
+        path: build/meson-logs/testlog.txt
+
+  macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - run: brew install gcc
+    - run: pip install meson ninja
+    - run: meson setup build
+      env:
+        CXX: g++
+    - run: meson test -C build -v
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: MacOS_Meson_Testlog
+        path: build/meson-logs/testlog.txt

@@ -1,6 +1,6 @@
 /*!
   \file   fglt_mtx.cpp
-  \brief  Run FGλT on Matrix-Market arrays.
+  \brief  Run FGlT on Matrix-Market arrays.
 
   \author Dimitris Floros
   \date   2020-08-19
