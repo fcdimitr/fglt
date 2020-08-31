@@ -1,0 +1,5 @@
+pip>=9.0.1
+meson
+ninja
+scipy
+numpy
