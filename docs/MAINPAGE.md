@@ -43,7 +43,7 @@ laptops or desktop computers.
 (3) It has `Python`, `Julia`, and `MATLAB` interfaces for easy integration
 with, and extension of, existing network analysis software.
 
-![](../../figs/table-overview.png)
+![](https://github.com/fcdimitr/fglt/raw/master/figs/table-overview.png)
 
 # Getting started 
 
