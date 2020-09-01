@@ -1,14 +1,14 @@
-name: ci_meson
+name: ci_build
 
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
   push:
-    paths:
-      - "**.cpp"
-      - "**.hpp"
+    branches:
+      - master
   pull_request:
-    paths:
-      - "**.cpp"
-      - "**.hpp"
+    branches:
+      - master
 
 jobs:
 
@@ -20,15 +20,16 @@ jobs:
       with:
         python-version: '3.x'
     - run: pip install -r requirements.txt
-    - run: meson setup build
+    - run: meson build
       env:
         CXX: g++
     - run: meson test -C build -v
+    - run: python python/demo.py
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
-        name: Linux_Meson_Testlog
-        path: build/meson-logs/testlog.txt
+        name: Linux_Testlog
+        path: build/linux-logs/testlog.txt
 
   macos:
     runs-on: macos-latest
@@ -43,8 +44,9 @@ jobs:
       env:
         CXX: g++
     - run: meson test -C build -v
+    - run: python python/demo.py
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
-        name: MacOS_Meson_Testlog
-        path: build/meson-logs/testlog.txt
+        name: MacOS_Testlog
+        path: build/macos-logs/testlog.txt
