@@ -161,12 +161,16 @@ conduct](https://github.com/fcdimitr/fglt/blob/master/CODE_OF_CONDUCT.md).
 
 # Contributors 
 
-*Design and development*:\
+*Design and development*:<br>
 Dimitris Floros<sup>1</sup>, Nikos Pitsianis<sup>1,2</sup>, 
 Xiaobai Sun<sup>2</sup>
 
-*Development of Julia and Python wrappers*:\
+*Development of Julia and Python wrappers*:<br>
 Jason Barmparesos<sup>1</sup>, Konstantinos Kitsios<sup>1</sup>
+
+*We also thank the following, for helpful comments and bug fixes*:<br>
+George Bisbas
+
 
 <sup>1</sup> Department of Electrical and Computer Engineering,
 Aristotle University of Thessaloniki, Thessaloniki 54124, Greece\
