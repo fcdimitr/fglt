@@ -42,7 +42,8 @@ jobs:
       env:
         CXX: g++
     - run: meson test -C build -v
-    - run: |
+    - name: Julia package setup
+      run: |
         julia -e '
           import Pkg
           Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")
@@ -50,9 +51,9 @@ jobs:
           Pkg.add("Match")'
     - name: Julia test suite
       run: |
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/build
         julia -e '
-          include("../testsuite/UnitTests.jl")' > meson-logs/julialogs.txt
-      working-directory: ./build        
+          include("testsuite/UnitTests.jl")' > meson-logs/julialogs.txt
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
