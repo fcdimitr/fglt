@@ -5,6 +5,7 @@
 
 version: 2
 updates:
+  # Enable version updates for pip
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
@@ -16,3 +17,4 @@ updates:
       prefix: "pip prod"
       prefix-development: "pip dev"
       include: "scope"
+      
