@@ -42,12 +42,14 @@ jobs:
       env:
         CXX: g++
     - run: meson test -C build -v
-    - run: julia -e '
-             using Pkg
-             Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")'
+    - run: |
+        julia -e '
+          using Pkg
+          Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")'
     - name: Julia test suite
-      run: julia -e '
-             include("../testsuite/UnitTests.jl")' > meson-logs/julialogs.txt
+      run: |
+        julia -e '
+          include("../testsuite/UnitTests.jl")' > meson-logs/julialogs.txt
       working-directory: ./build        
     - uses: actions/upload-artifact@v1
       if: failure()
