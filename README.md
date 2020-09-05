@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/fcdimitr/fglt.svg)](https://github.com/fcdimitr/fglt/blob/master/LICENCE)
 [![GitHub issues](https://img.shields.io/github/issues/fcdimitr/fglt.svg)](https://github.com/fcdimitr/fglt/issues/)
 ![ci_build](https://github.com/fcdimitr/fglt/workflows/ci_build/badge.svg)
+![tests](https://github.com/fcdimitr/fglt/workflows/tests/badge.svg)
 
 -   [Summary](#summary)
 -   [Getting started](#getting-started)
