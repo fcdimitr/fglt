@@ -36,7 +36,7 @@ jobs:
     - uses: julia-actions/setup-julia@v1
       with:
           version: '1.5'
-          arch: x65
+          arch: x64
     - run: pip install -r requirements.txt
     - run: meson build
       env:
@@ -47,10 +47,10 @@ jobs:
              Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")'
     - name: Julia test suite
       run: julia -e '
-             include("../testsuite/UnitTests.jl")'
+             include("../testsuite/UnitTests.jl")' > meson-logs/julialogs.txt
       working-directory: ./build        
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
         name: Linux_Testlog
-        path: build/linux-logs/testlog.txt
+        path: build/meson-logs/
