@@ -1,0 +1,56 @@
+name: tests
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+    paths:
+      - "**.cpp"
+      - "**.hpp"
+      - "**.py"
+      - "**.jl"
+      - meson.build
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test basic functionality'
+
+jobs:
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - run: pip install -r requirements.txt
+    - run: meson build
+      env:
+        CXX: g++
+    - run: meson test -C build -v
+    - run: meson install -C build
+    - run: python python/demo.py
+    - uses: julia-actions/setup-julia@v1
+      with:
+          version: '1.5'
+          arch: x65
+    - run: julia -e '
+             using Pkg
+             Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")'
+    - run: julia -e '
+             include("testsuite/UnitTests.jl")'
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: Linux_Testlog
+        path: build/linux-logs/testlog.txt
