@@ -51,9 +51,10 @@ jobs:
           Pkg.add("Match")'
     - name: Julia test suite
       run: |
-        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/build
         julia -e '
-          include("testsuite/UnitTests.jl")' > meson-logs/julialogs.txt
+          include("testsuite/UnitTests.jl")' > build/meson-logs/julialogs.txt
+      env:
+        LD_LIBRARY_PATH: ${{ env.PWD }}/build
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
