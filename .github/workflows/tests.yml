@@ -44,8 +44,9 @@ jobs:
     - run: meson test -C build -v
     - run: |
         julia -e '
-          using Pkg
-          Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")'
+          import Pkg
+          Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")
+          Pkg.add("LightGraphs")'
     - name: Julia test suite
       run: |
         julia -e '
