@@ -6,6 +6,11 @@ on:
   push:
     branches:
       - master
+    paths:
+      - "**.cpp"
+      - "**.hpp"
+      - "**.py"
+      - meson.build
   pull_request:
     branches:
       - master
