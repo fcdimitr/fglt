@@ -33,16 +33,15 @@ jobs:
     - uses: actions/setup-python@v1
       with:
         python-version: '3.x'
+    - uses: julia-actions/setup-julia@v1
+      with:
+          version: '1.5'
+          arch: x65
     - run: pip install -r requirements.txt
     - run: meson build
       env:
         CXX: g++
     - run: meson test -C build -v
-    - run: python python/demo.py
-    - uses: julia-actions/setup-julia@v1
-      with:
-          version: '1.5'
-          arch: x65
     - run: julia -e '
              using Pkg
              Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")'
