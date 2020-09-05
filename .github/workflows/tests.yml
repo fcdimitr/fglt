@@ -46,7 +46,8 @@ jobs:
         julia -e '
           import Pkg
           Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")
-          Pkg.add("LightGraphs")'
+          Pkg.add("LightGraphs")
+          Pkg.add("Match")'
     - name: Julia test suite
       run: |
         julia -e '
