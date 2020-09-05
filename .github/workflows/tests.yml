@@ -38,7 +38,6 @@ jobs:
       env:
         CXX: g++
     - run: meson test -C build -v
-    - run: meson install -C build
     - run: python python/demo.py
     - uses: julia-actions/setup-julia@v1
       with:
@@ -47,8 +46,10 @@ jobs:
     - run: julia -e '
              using Pkg
              Pkg.add(url="https://github.com/NorthSailor/FGLT.jl")'
-    - run: julia -e '
-             include("testsuite/UnitTests.jl")'
+    - name: Julia test suite
+      run: julia -e '
+             include("../testsuite/UnitTests.jl")'
+      working-directory: ./build        
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
