@@ -26,8 +26,7 @@ date: 30 August 2020
 bibliography: references.bib
 ---
 
-Summary
-=======
+# Summary
 
 We provide ${\rm FG}_{\ell}{\rm T}$, a `C/C++` multi-threading library,
 for Fast Graphlet Transform of large, sparse, undirected
@@ -52,8 +51,7 @@ laptops or desktop computers.
 (3) It has `Python`, `Julia`, and `MATLAB` interfaces for easy integration
 with, and extension of, existing network analysis software.
 
-Statement of need
-=================
+# Statement of need
 
 With continuous and rapid growth in interest, understanding, and
 applications of the graphlet
@@ -104,8 +102,7 @@ substantially outpaces other available software.
 
 
 
-Figures
-================
+# Figures
 
 ![Dictionary $\Sigma_{16}$ of $16$ graphlets. In each graphlet, the
 designated incidence node is specified by the red square marker, its
