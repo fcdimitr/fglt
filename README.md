@@ -50,7 +50,7 @@ with, and extension of, existing network analysis software.
 
 ## System environment 
 
-The FGlT library has been tested under Ubuntu 18.04 and macOS Catalina
+The `FGlT` library has been tested under Ubuntu 18.04 and macOS Catalina
 v10.15.6. The prerequisites is a `C++` compiler and the
 [Meson](https://mesonbuild.com) package with
 [Ninja](https://ninja-build.org) support. If the specified compiler
@@ -67,7 +67,7 @@ You can install `meson` and `ninja` issuing
 
 ## Installation 
 
-After installing `meson` and `ninja`, you can install FGlT:
+After installing `meson` and `ninja`, you can install `FGlT`:
 
     meson build
     cd build
@@ -78,7 +78,7 @@ To specify the `C++` compiler:
     env CXX=g++-7 meson build
     
 for example, to use the [OpenCilk](http://cilk.mit.edu) compiler,
-installed under `/usr/pkg/opencilk`, you can install FGlT using the command
+installed under `/usr/pkg/opencilk`, you can install `FGlT` using the command
 
     env CXX=/usr/pkg/opencilk/bin/clang++ meson build
 
@@ -107,7 +107,7 @@ under `build` directory.
 
 ## Usage demo
 
-The FGlT executable is named `fglt`. Usage:
+The `FGlT` executable is named `fglt`. Usage:
     
     fglt <filename>
     
@@ -120,7 +120,7 @@ in the file `freq_net.csv`, within the working directory. For example,
 
 ## Python 3
 
-In order to run the `fglt()` C++ function we will need the scipy library:
+In order to run the `fglt()` C++ function we will need the `scipy` library:
 
     pip install scipy
 
@@ -128,11 +128,11 @@ A `Python` demo script is provided under the `python` directory, which can be in
 
     python demo.py
     
-and showcases the use of FGlT on a couple of test graphs.
+and showcases the use of `FGlT` on a couple of test graphs.
 
 ## Julia
 
-You can use FGlT with Julia with the
+You can use `FGlT` with Julia with the
 [FGLT.jl](https://github.com/NorthSailor/FGLT.jl) package. Further
 instructions and demo scripts are available within.
 
@@ -148,11 +148,11 @@ A `MATLAB` demo script is provided under `MATLAB`:
 
     demo.m
     
-which showcases the use of FGlT on a couple of test graphs.
+which showcases the use of `FGlT` on a couple of test graphs.
 
 # License and community guidelines 
 
-The FGlT library is licensed under the [GNU general public
+The `FGlT` library is licensed under the [GNU general public
 license v3.0](https://github.com/fcdimitr/fglt/blob/master/LICENSE).
 To contribute to FGlT or report any problem, follow our
 [contribution
