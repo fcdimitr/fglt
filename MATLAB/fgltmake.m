@@ -34,10 +34,10 @@ if (have_octave)
     %% the same way as MATLAB's mex command.
 
     % use -R2018a for the new interleaved complex API
-    flags = '-g -O -R2018a -std=c11 -fopenmp -fPIC -Wno-pragmas' ;
+    flags = '-O -R2018a -std=c11 -fopenmp -fPIC -Wno-pragmas' ;
 else
     % use -R2018a for the new interleaved complex API
-    flags = '-g -O -R2018a' ;
+    flags = '-O -R2018a' ;
 
     try
         if (strncmp (computer, 'GLNX', 4))
