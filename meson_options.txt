@@ -1,0 +1,5 @@
+option('cilktool',
+       type : 'combo',
+       choices : ['', 'none', 'cilkscale', 'cilksan'],
+       value : '',
+       description : 'OpenCilk instrumentation tool')

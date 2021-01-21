@@ -14,6 +14,9 @@
   #include <cilk/cilk.h>
   #include <cilk/cilk_api.h>
   #define FOR cilk_for
+  #ifdef CILKSCALE
+    #include <cilk/cilkscale.h>
+  #endif
 #else
   #define FOR for
 #endif
@@ -364,7 +367,10 @@ extern "C" int compute
 
   struct timeval timer_all = tic();
 
-  
+#ifdef CILKSCALE
+  wsp_t cs_start, cs_end;
+  cs_start = wsp_getworkspan();
+#endif
 
 
   // --- setup helpers
@@ -498,7 +504,15 @@ extern "C" int compute
   free(t02);
   free(c3);
 
+#ifdef CILKSCALE
+  cs_end = wsp_getworkspan();
+#endif
+
   printf( "Total elapsed time: %.4f sec\n", toc( timer_all ) );
+
+#ifdef CILKSCALE
+  wsp_dump( wsp_sub( cs_end, cs_start ), "FGLT computation" );
+#endif
   
   return 0;
   
