@@ -114,9 +114,6 @@ if cpp_args_bench != []
                        install_rpath : get_option('prefix') / 'lib')
 endif
 
-# ========== tests
+# ========== tests & benchmark
 
-t1 = find_program( 'testdata/test_s6.sh')
-t2 = find_program( 'testdata/test_s12.sh')
-test('Validation on s6 synthetic graph', t1, args : e, is_parallel : false)
-test('Validation on s12 synthetic graph', t2, args : e, is_parallel : false)
+subdir('testdata')
