@@ -3,3 +3,8 @@ option('cilktool',
        choices : ['', 'none', 'cilkscale', 'cilksan'],
        value : '',
        description : 'OpenCilk instrumentation tool')
+
+option('enable_benchmark',
+       type : 'boolean',
+       value : false,
+       description : 'Enable benchmark target? (Will download the `coPapersDBLP` graph from the SuiteSparse Matrix Collection)')
