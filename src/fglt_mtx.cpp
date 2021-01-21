@@ -206,7 +206,7 @@ int main(int argc, char **argv)
 
   np = getWorkers();
 
-  std::cout << "Initiating fast graphlet transform for'" << filename
+  std::cout << "Initiating fast graphlet transform for '" << filename
             << "' using " << np << " threads." << std::endl;
   
   compute(f,fn,row,col,n,m,np);
