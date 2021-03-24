@@ -1,5 +1,6 @@
 # FGlT <br/> Fast Graphlet Transform
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4633459.svg)](https://doi.org/10.5281/zenodo.4633459)
 [![GitHub license](https://img.shields.io/github/license/fcdimitr/fglt.svg)](https://github.com/fcdimitr/fglt/blob/master/LICENCE)
 [![GitHub issues](https://img.shields.io/github/issues/fcdimitr/fglt.svg)](https://github.com/fcdimitr/fglt/issues/)
 ![ci_build](https://github.com/fcdimitr/fglt/workflows/ci_build/badge.svg)
