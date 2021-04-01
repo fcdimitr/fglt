@@ -169,9 +169,6 @@ Xiaobai Sun<sup>2</sup>
 *Development of Julia and Python wrappers*:<br>
 Jason Barmparesos<sup>1</sup>, Konstantinos Kitsios<sup>1</sup>
 
-*OpenCilk port*:<br>
-Alexandros-Stavros Iliopoulos<sup>3</sup>
-
 *We also thank the following, for helpful comments and bug fixes*:<br>
 George Bisbas
 
@@ -179,6 +176,4 @@ George Bisbas
 <sup>1</sup> Department of Electrical and Computer Engineering,
 Aristotle University of Thessaloniki, Thessaloniki 54124, Greece<br>
 <sup>2</sup> Department of Computer Science, Duke University, Durham, NC
-27708, USA<br>
-<sup>3</sup> Computer Science and Artificial Intelligence Laboratory,
-Massachusetts Institute of Technology, Cambridge, MA 02139, USA
+27708, USA
