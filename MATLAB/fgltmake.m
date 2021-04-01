@@ -2,7 +2,7 @@ function fgltmake (what)
 %GBMAKE compile MATLAB interface for Fast Graphlet Transform
 %
 % Usage:
-%   fgtmake
+%   fgltmake
 %
 % See also mex, version.
 
