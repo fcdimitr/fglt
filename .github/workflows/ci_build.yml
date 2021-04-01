@@ -36,22 +36,22 @@ jobs:
         name: Linux_Testlog
         path: build/linux-logs/testlog.txt
 
-  macos:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
-      with:
-        python-version: '3.x'
-    - run: brew install gcc
-    - run: pip install -r requirements.txt
-    - run: meson setup build
-      env:
-        CXX: g++
-    - run: meson test -C build -v
-    - run: python python/demo.py
-    - uses: actions/upload-artifact@v1
-      if: failure()
-      with:
-        name: MacOS_Testlog
-        path: build/macos-logs/testlog.txt
+#  macos:
+#    runs-on: macos-latest
+#    steps:
+#    - uses: actions/checkout@v1
+#    - uses: actions/setup-python@v1
+#      with:
+#        python-version: '3.x'
+#    - run: brew install gcc
+#    - run: pip install -r requirements.txt
+#    - run: meson setup build
+#      env:
+#        CXX: g++
+#    - run: meson test -C build -v
+#    - run: python python/demo.py
+#    - uses: actions/upload-artifact@v1
+#      if: failure()
+#      with:
+#        name: MacOS_Testlog
+#        path: build/macos-logs/testlog.txt
