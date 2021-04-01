@@ -20,15 +20,15 @@ enable_cilkplus = not enable_opencilk \
                   and cc.has_header('cilk/cilk_api.h')
 
 if is_icpc
-  add_global_arguments(['-wd3947,3946,10006,3950'], language : 'cpp')
+  add_project_arguments(['-wd3947,3946,10006,3950'], language : 'cpp')
 endif
 
 if enable_opencilk
-  add_global_arguments(['-fopencilk', '-DHAVE_CILK_CILK_H'], language : 'cpp')
-  add_global_link_arguments(['-fopencilk'], language : 'cpp')
+  add_project_arguments(['-fopencilk', '-DHAVE_CILK_CILK_H'], language : 'cpp')
+  add_project_link_arguments(['-fopencilk'], language : 'cpp')
 elif enable_cilkplus
-  add_global_arguments(['-fcilkplus', '-DHAVE_CILK_CILK_H'], language : 'cpp')
-  add_global_link_arguments(['-lcilkrts'], language : 'cpp')
+  add_project_arguments(['-fcilkplus', '-DHAVE_CILK_CILK_H'], language : 'cpp')
+  add_project_link_arguments(['-lcilkrts'], language : 'cpp')
 endif
 
 # ========== OpenCilk tools
