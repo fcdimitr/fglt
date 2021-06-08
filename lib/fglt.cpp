@@ -15,7 +15,13 @@
   #include <cilk/cilk_api.h>
   #define FOR cilk_for
 #else
-  #define FOR for
+  #ifdef _OPENMP
+    #include <omp.h>
+    #define FOR _Pragma("omp parallel for")         \
+                for
+  #else
+    #define FOR for
+  #endif
 #endif
 
 #include "fglt.hpp"
@@ -42,7 +48,11 @@ extern "C" int getWorkers(){
 #ifdef HAVE_CILK_CILK_H
   return __cilkrts_get_nworkers();
 #else
-  return 1;
+  #ifdef _OPENMP
+    return omp_get_max_threads();
+  #else
+    return 1;
+  #endif
 #endif
 }
 
@@ -409,7 +419,11 @@ extern "C" int compute
 #ifdef HAVE_CILK_CILK_H
     int ip = __cilkrts_get_worker_number();
 #else
+  #ifdef _OPENMP
+    int ip = omp_get_thread_num();
+  #else
     int ip = 0;
+  #endif
 #endif
 
 
@@ -454,7 +468,11 @@ extern "C" int compute
 #ifdef HAVE_CILK_CILK_H
     int ip = __cilkrts_get_worker_number();
 #else
+  #ifdef _OPENMP
+    int ip = omp_get_thread_num();
+  #else
     int ip = 0;
+  #endif
 #endif
 
     

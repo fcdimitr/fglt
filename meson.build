@@ -12,9 +12,11 @@ if is_icpc
 endif
 
 if enable_cilk
-   add_global_arguments(['-fcilkplus', '-DHAVE_CILK_CILK_H'], language : 'cpp')
-   add_global_link_arguments(['-lcilkrts'], language : 'cpp')
+ add_global_arguments(['-fcilkplus', '-DHAVE_CILK_CILK_H'], language : 'cpp')
+ add_global_link_arguments(['-lcilkrts'], language : 'cpp')
 endif
+
+dep_openmp = dependency('openmp', language : 'cpp', required : false)
 
 fglthpp = configure_file(copy: true,
                          input: 'lib/fglt.hpp',
@@ -23,10 +25,12 @@ fglthpp = configure_file(copy: true,
 install_headers('lib/fglt.hpp')
 
 fglt_static = static_library('fglt', 'lib/fglt.cpp',
+                             dependencies : [dep_openmp],
                              install : true)
 
 fglt_shared = shared_library('fglt', 'lib/fglt.cpp',
                              soversion : '0',
+                             dependencies : [dep_openmp],
                              install : true)
 
 e = executable('fglt', 'src/fglt_mtx.cpp',
