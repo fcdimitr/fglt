@@ -1,0 +1,4 @@
+option('prefer_openmp',
+       type : 'boolean',
+       value : false,
+       description : 'Use openMP instead of Cilk?')
