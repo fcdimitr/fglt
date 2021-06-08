@@ -46,10 +46,10 @@ fglt_shared = shared_library('fglt', 'lib/fglt.cpp',
                              dependencies : [dep_openmp, dep_cilk],
                              install : true)
 
-e = executable('fglt', 'src/fglt_mtx.cpp',
-               link_with : fglt_shared,
-               dependencies : [dep_openmp, dep_cilk],
-               install : true)
+# e = executable('fglt', 'src/fglt_mtx.cpp',
+#                link_with : fglt_shared,
+#                dependencies : [dep_openmp, dep_cilk],
+#                install : true)
 
 # tests
 
