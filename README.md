@@ -54,8 +54,8 @@ with, and extension of, existing network analysis software.
 The `FGlT` library has been tested under Ubuntu 18.04 and macOS Catalina
 v10.15.6. The prerequisites is a `C++` compiler and the
 [Meson](https://mesonbuild.com) package with [Ninja](https://ninja-build.org)
-support. If the specified compiler supports `Cilk`, (e.g., the new
-[OpenCilk](opencilk.org) 1.0 `clang` compiler, GNU `g++-7`, Intel `icpc`
+support. If the specified compiler supports `Cilk`, (e.g., the
+[OpenCilk](https://opencilk.org) `clang` compiler, GNU `g++-7`, Intel `icpc`
 versions prior to 2019, or Cilk Plus/LLVM `clang`), the compiled program will
 run in parallel.
 
@@ -76,8 +76,8 @@ directory:
 
 To specify the `C++` compiler, set the `CXX` environment variable when
 configuring the build directory. For example, to use the
-[OpenCilk](opencilk.org) compiler, installed under `/usr/pkg/opencilk`, you can
-install `FGlT` using the command
+[OpenCilk](https://opencilk.org) compiler, installed under `/usr/pkg/opencilk`,
+you can issue the command:
 
     env CXX=/usr/pkg/opencilk/bin/clang++ meson build
 
