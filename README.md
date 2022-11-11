@@ -34,7 +34,7 @@ network analysis: statistical or/and topological measures, comparison,
 classification, modeling, feature embedding and dynamic variation,
 among others. The library `FGlT` is distinguished in
 the following key aspects.
-(1) It is based on the [fast, sparse and exact transform formulas](https://arxiv.org/abs/2007.11111)
+(1) It is based on the [fast, sparse and exact transform formulas](https://ieeexplore.ieee.org/document/9286205)
 which are of the lowest time and space complexities
 among known algorithms, and, at the same time, in ready form for
 globally streamlined computation in matrix-vector operations.
