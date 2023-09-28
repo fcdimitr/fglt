@@ -20,6 +20,11 @@
 -   [Contributors](#contributors)
 
 # Summary
+This package is associated with the article
+
+Dimitris Floros, Nikos Pitsianis and Xiaobai Sun, "[Fast Graphlet Transform of Sparse Graphs](https://ieeexplore.ieee.org/document/9286205)", IEEE High Performance Extreme Computing Conference, 2020.
+
+If you use this package, please cite this paper. 
 
 We provide `FGlT`, a `C/C++` multi-threading library, for Fast
 Graphlet Transform of large, sparse, undirected networks/graphs. The
