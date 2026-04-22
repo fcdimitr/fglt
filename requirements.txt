@@ -1,5 +1,5 @@
 pip>=9.0.1
 meson>=0.55
-ninja>=1.10
+ninja>=1.13.0
 scipy>=1.5
 numpy>=1.19
